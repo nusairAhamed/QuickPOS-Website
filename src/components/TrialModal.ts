@@ -36,7 +36,7 @@ export function renderTrialModal(): string {
             </div>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="modal-form-row">
             <div class="modal-form-group">
               <label class="modal-label" for="trial-phone">WhatsApp / Mobile No</label>
               <input type="tel" id="trial-phone" class="modal-input" placeholder="+94 77 123 4567" required />

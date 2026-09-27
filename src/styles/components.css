@@ -283,12 +283,13 @@
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+  font-size: clamp(1.85rem, 5vw, 4.25rem);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.15;
   letter-spacing: -0.035em;
   color: var(--text-primary);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
+  word-break: break-word;
 }
 
 .hero-gradient-text {
@@ -299,12 +300,13 @@
 }
 
 .hero-subtitle {
-  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
   color: var(--text-secondary);
-  line-height: 1.65;
+  line-height: 1.6;
   max-width: 780px;
   margin: 0 auto 2.2rem;
   font-weight: 400;
+  word-break: break-word;
 }
 
 .hero-cta-group {
@@ -359,11 +361,15 @@
   padding: 0.75rem 1.25rem;
   background: var(--bg-surface-subtle);
   border-bottom: 1px solid var(--border-subtle);
+  gap: 0.5rem;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .window-dots {
   display: flex;
   gap: 6px;
+  flex-shrink: 0;
 }
 
 .window-dot {
@@ -386,6 +392,17 @@
   font-size: 0.78rem;
   color: var(--text-secondary);
   font-family: var(--font-mono);
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.window-address-bar span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
 }
 
 .window-screen-img {
@@ -438,7 +455,7 @@
 
 @media (max-width: 1024px) {
   .floating-chip {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -656,6 +673,7 @@
   margin-bottom: 2.5rem;
   overflow-x: auto;
   padding-bottom: 0.5rem;
+  max-width: 100%;
 }
 
 .tab-nav-container {
@@ -666,6 +684,7 @@
   border: 1px solid var(--border-subtle);
   border-radius: 9999px;
   box-shadow: var(--shadow-xs);
+  max-width: 100%;
 }
 
 .tab-nav-btn {
@@ -1270,6 +1289,12 @@
   margin-bottom: 1.2rem;
 }
 
+.modal-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
 .modal-label {
   display: block;
   font-size: 0.85rem;
@@ -1300,6 +1325,7 @@
 .section-hardware-agnostic {
   padding: 5.5rem 0;
   background: transparent;
+  overflow: hidden;
 }
 
 /* Hardware Interactive Hotspot Stage - Transparent Isolated Device Focus */
@@ -1330,7 +1356,7 @@
 
 .hardware-stage-glow {
   position: absolute;
-  inset: -15% -5%;
+  inset: -10% 0;
   pointer-events: none;
   background: radial-gradient(ellipse at 50% 55%, rgba(37, 99, 235, 0.16) 0%, rgba(99, 102, 241, 0.08) 45%, transparent 70%);
   z-index: 0;
@@ -1397,6 +1423,7 @@
 .hotspot-card {
   position: absolute;
   width: 250px;
+  max-width: calc(100vw - 2.5rem);
   padding: 0.95rem 1.15rem;
   border-radius: 1rem;
   background: rgba(15, 23, 42, 0.94);
@@ -2027,50 +2054,28 @@
 }
 
 /* ===================================================================
-   Responsive Media Queries for PDF Sections
-   =================================================================== */
-@media (max-width: 960px) {
-  .transformation-comparison-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
-  }
-  .trans-arrow {
-    margin: 0.5rem auto;
-    transform: rotate(90deg);
-  }
-  .deep-dive-row,
-  .deep-dive-row.deep-dive-reverse {
-    grid-template-columns: 1fr !important;
-    gap: 2.5rem !important;
-    margin-bottom: 4.5rem !important;
-  }
-  .deep-dive-row.deep-dive-reverse .mockup-window-frame {
-    order: 2;
-  }
-  .deep-dive-row.deep-dive-reverse .deep-dive-text {
-    order: 1;
-  }
-  .hardware-grid-4 {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  .data-isolation-card {
-    grid-template-columns: 1fr !important;
-    padding: 2.25rem !important;
-  }
-}
-
-@media (max-width: 580px) {
-  .hardware-grid-4 {
-    grid-template-columns: 1fr !important;
-  }
-  .plan-features-grid {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-/* ===================================================================
    Command Stage Multi-Image Slider & Sub-Navigation Styles
    =================================================================== */
+
+.command-stage-frame {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-2xl);
+}
+
+.plan-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem 1.5rem;
+  text-align: left;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: var(--bg-surface-subtle);
+  border-radius: 1rem;
+  border: 1px solid var(--border-subtle);
+}
 
 .stage-subnav-wrapper {
   display: flex;
@@ -2078,6 +2083,7 @@
   margin-bottom: 1.75rem;
   overflow-x: auto;
   padding-bottom: 0.25rem;
+  max-width: 100%;
 }
 
 .stage-subnav-container {
@@ -2089,7 +2095,6 @@
   border-radius: 9999px;
   box-shadow: var(--shadow-sm);
   max-width: 100%;
-  overflow-x: auto;
 }
 
 .stage-subnav-pill {
@@ -2145,6 +2150,11 @@
   position: relative;
   overflow: hidden;
   user-select: none;
+  background: var(--bg-surface-subtle);
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .stage-screen-img {
@@ -2245,6 +2255,7 @@
   font-weight: 700;
   letter-spacing: 0.02em;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* Floating Dots Bar */
@@ -2288,7 +2299,162 @@
   box-shadow: 0 0 10px rgba(37, 99, 235, 0.8);
 }
 
+/* ===================================================================
+   Responsive Media Queries & Mobile Optimizations
+   =================================================================== */
+@media (max-width: 960px) {
+  .transformation-comparison-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  .trans-arrow {
+    margin: 0.5rem auto;
+    transform: rotate(90deg);
+  }
+  .deep-dive-row,
+  .deep-dive-row.deep-dive-reverse {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+    margin-bottom: 4.5rem !important;
+  }
+  .deep-dive-row.deep-dive-reverse .mockup-window-frame {
+    order: 2;
+  }
+  .deep-dive-row.deep-dive-reverse .deep-dive-text {
+    order: 1;
+  }
+  .hardware-grid-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .data-isolation-card {
+    grid-template-columns: 1fr !important;
+    padding: 2.25rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Section Spacings */
+  .section-deep-dives,
+  .section-transformation,
+  .section-command-stage,
+  .section-hardware-agnostic,
+  .section-data-isolation,
+  .section-pricing,
+  .section-cta,
+  .section-rocket-cta {
+    padding: 3.5rem 0 !important;
+  }
+  .hero-section {
+    padding: 3rem 0 2rem !important;
+  }
+
+  /* Command Stage & Tabs */
+  .tab-nav-wrapper {
+    justify-content: flex-start !important;
+    padding: 0 0.5rem 0.5rem !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tab-nav-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+  .tab-nav-container {
+    width: max-content !important;
+  }
+  .tab-nav-btn {
+    padding: 0.5rem 0.95rem;
+    font-size: 0.8rem;
+  }
+
+  .stage-subnav-wrapper {
+    justify-content: flex-start !important;
+    padding: 0 0.5rem 0.25rem !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .stage-subnav-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+  .stage-subnav-container {
+    width: max-content !important;
+  }
+  .stage-subnav-pill {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .stage-slider-container {
+    min-height: 200px !important;
+  }
+  .stage-info-bar {
+    padding: 1rem 1.25rem !important;
+  }
+
+  /* Hardware Section Hotspots & Info Card */
+  .hardware-hotspot-item .hotspot-card {
+    display: none !important;
+  }
+  .hardware-selector-bar {
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+  .hardware-selector-btn {
+    font-size: 0.78rem;
+    padding: 0.5rem 0.85rem;
+  }
+}
+
+.hardware-info-card {
+  margin: 1.5rem auto 0;
+  max-width: 580px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1rem;
+  padding: 1.15rem 1.35rem;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  transition: all 0.25s ease;
+}
+
+.hardware-info-card-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.hardware-info-card-header h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.hardware-info-card p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0;
+}
+
 @media (max-width: 640px) {
+  /* Titlebars */
+  .window-titlebar {
+    padding: 0.5rem 0.75rem !important;
+    gap: 0.4rem !important;
+  }
+  .window-dots {
+    display: none !important;
+  }
+  .stage-titlebar-badge {
+    font-size: 0.68rem !important;
+    padding: 0.2rem 0.5rem !important;
+  }
+  .window-address-bar {
+    padding: 0.2rem 0.55rem !important;
+    font-size: 0.72rem !important;
+  }
+
   .stage-slider-arrow {
     width: 36px;
     height: 36px;
@@ -2299,14 +2465,111 @@
   .stage-slider-next {
     right: 0.5rem;
   }
-  .stage-slide-badge {
-    top: 0.75rem;
-    right: 0.75rem;
-    font-size: 0.7rem;
-    padding: 0.25rem 0.65rem;
-  }
   .stage-dots-bar {
     bottom: 0.75rem;
+  }
+
+  /* Data Isolation */
+  .data-isolation-card {
+    padding: 1.75rem 1rem !important;
+    border-radius: 1.25rem !important;
+    gap: 1.75rem !important;
+  }
+  .isolation-heading {
+    font-size: 1.75rem !important;
+  }
+  .isolation-description {
+    font-size: 0.9rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+  .arch-tiers-list {
+    padding: 0.75rem !important;
+  }
+  .arch-tier-item {
+    padding: 0.65rem 0.75rem !important;
+    gap: 0.5rem !important;
+  }
+  .arch-tier-icon {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+  .arch-tier-code {
+    font-size: 0.75rem !important;
+  }
+  .arch-tier-badge {
+    font-size: 0.6rem !important;
+    padding: 0.15rem 0.35rem !important;
+  }
+  .arch-terminal-footer {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.65rem !important;
+  }
+
+  /* Pricing */
+  .pricing-main-card {
+    padding: 2rem 1.25rem !important;
+    border-radius: 1.25rem !important;
+  }
+  .plan-features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+    padding: 1rem !important;
+  }
+
+  /* Rocket CTA */
+  .rocket-cta-card {
+    padding: 2.5rem 1.25rem !important;
+    border-radius: 1.25rem !important;
+  }
+  .rocket-cta-title {
+    font-size: 1.85rem !important;
+  }
+  .rocket-cta-desc {
+    font-size: 0.9rem !important;
+    margin-bottom: 1.75rem !important;
+  }
+
+  /* Transformation */
+  .trans-card {
+    padding: 1.5rem 1.25rem !important;
+  }
+
+  /* Deep Dives */
+  .feature-check-pill {
+    padding: 0.85rem 1rem !important;
+  }
+  .deep-dive-row,
+  .deep-dive-row.deep-dive-reverse {
+    gap: 1.75rem !important;
+    margin-bottom: 3.5rem !important;
+  }
+}
+
+@media (max-width: 500px) {
+  /* Buttons stacking on small mobile screens */
+  .hero-cta-group {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.75rem !important;
+  }
+  .hero-cta-group .btn,
+  .section-cta .btn,
+  .section-rocket-cta .btn {
+    width: 100% !important;
+  }
+  .btn-lg {
+    padding: 0.85rem 1.5rem !important;
+    font-size: 0.95rem !important;
+  }
+  
+  /* Modal */
+  .modal-form-row {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+  .modal-card {
+    padding: 1.5rem 1.15rem !important;
+    border-radius: 1.25rem !important;
   }
 }
 

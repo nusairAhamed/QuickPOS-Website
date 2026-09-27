@@ -180,7 +180,7 @@ export function renderCommandStage(): string {
   const initialSlide = initialTab.slides[0];
 
   return `
-    <section class="section-command-stage" id="command-stage" style="padding: 5.5rem 0;">
+    <section class="section-command-stage" id="command-stage">
       <div class="container">
         <!-- Section Header -->
         <div class="section-header">
@@ -215,7 +215,7 @@ export function renderCommandStage(): string {
         </div>
 
         <!-- Stage Showcase Display Frame -->
-        <div class="command-stage-frame" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 1.5rem; overflow: hidden; box-shadow: var(--shadow-2xl);">
+        <div class="command-stage-frame">
           <!-- Titlebar -->
           <div class="window-titlebar">
             <div class="window-dots">
@@ -238,7 +238,7 @@ export function renderCommandStage(): string {
           </div>
 
           <!-- Active Slider Viewport -->
-          <div class="stage-slider-container" id="stage-slider-viewport" style="position: relative; overflow: hidden; background: var(--bg-surface-subtle); min-height: 420px; display: flex; align-items: center; justify-content: center;">
+          <div class="stage-slider-container" id="stage-slider-viewport">
             
             <!-- Slide Image -->
             <img 

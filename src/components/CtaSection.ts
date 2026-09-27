@@ -2,9 +2,9 @@
 
 export function renderCtaSection(): string {
   return `
-    <section class="section-cta" id="contact" style="padding: 5.5rem 0;">
+    <section class="section-cta" id="contact">
       <div class="container">
-        <div class="rocket-cta-card" style="padding: 4rem 2.5rem;">
+        <div class="rocket-cta-card">
           <div class="rocket-glow"></div>
           
           <div style="position: relative; z-index: 1; max-width: 780px; margin: 0 auto;">

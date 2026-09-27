@@ -329,9 +329,26 @@ function initInteractions(): void {
     });
   }
 
-  // Hardware Hotspot Interaction Setup
   const hotspotItems = document.querySelectorAll('.hardware-hotspot-item');
   const hotspotSelectorBtns = document.querySelectorAll('.hardware-selector-btn');
+  const hardwareData: Record<string, { title: string; desc: string }> = {
+    pc: {
+      title: 'Standard PC or Touch POS',
+      desc: 'Runs in Chrome, Edge, or Firefox. Works with zero local software installs or driver conflicts.'
+    },
+    printers: {
+      title: 'Thermal Printers',
+      desc: 'Full ESC/POS support for 80mm and 58mm thermal printers (Epson, Xprinter, Rongta, Sewoo).'
+    },
+    scanners: {
+      title: 'Barcode Scanners',
+      desc: 'Works with any standard USB or wireless handheld barcode scanner via keyboard emulation.'
+    },
+    drawers: {
+      title: 'Cash Drawers',
+      desc: 'RJ-11 connection to your receipt printer kicks the drawer open on cash sales automatically.'
+    }
+  };
 
   function setActiveHotspot(hotspotKey: string): void {
     hotspotItems.forEach(item => {
@@ -343,6 +360,14 @@ function initInteractions(): void {
       const isTarget = btn.getAttribute('data-target-hotspot') === hotspotKey;
       btn.classList.toggle('active', isTarget);
     });
+
+    const info = hardwareData[hotspotKey];
+    if (info) {
+      const titleEl = document.getElementById('hardware-info-card-title');
+      const descEl = document.getElementById('hardware-info-card-desc');
+      if (titleEl) titleEl.innerText = info.title;
+      if (descEl) descEl.innerText = info.desc;
+    }
   }
 
   hotspotItems.forEach(item => {

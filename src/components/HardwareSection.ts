@@ -121,6 +121,17 @@ export function renderHardwareSection(): string {
               <span>4. Cash Drawers</span>
             </button>
           </div>
+
+          <!-- Active Hardware Details Card for Mobile & Touch Screen Clarity -->
+          <div class="hardware-info-card" id="hardware-info-card">
+            <div class="hardware-info-card-header">
+              <span class="badge-pulse-dot" style="width: 6px; height: 6px;"></span>
+              <h4 id="hardware-info-card-title">Standard PC or Touch POS</h4>
+            </div>
+            <p id="hardware-info-card-desc">
+              Runs in Chrome, Edge, or Firefox. Works with zero local software installs or driver conflicts.
+            </p>
+          </div>
         </div>
       </div>
     </section>

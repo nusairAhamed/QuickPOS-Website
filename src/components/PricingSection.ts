@@ -39,7 +39,7 @@ export function renderPricingSection(): string {
           </div>
 
           <!-- Feature Grid -->
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem 1.5rem; text-align: left; margin: 2rem 0; padding: 1.5rem; background: var(--bg-surface-subtle); border-radius: 1rem; border: 1px solid var(--border-subtle);" class="plan-features-grid">
+          <div class="plan-features-grid">
             <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-primary);">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
               <span>Unlimited Register Transactions</span>

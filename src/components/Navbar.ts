@@ -35,7 +35,7 @@ export function renderNavbar(): string {
             </button>
 
             <!-- Primary CTA -->
-            <button class="btn btn-primary btn-sm open-trial-modal-btn">
+            <button class="btn btn-primary btn-sm open-trial-modal-btn hide-on-mobile">
               <span>Start Free Trial</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
