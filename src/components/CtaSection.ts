@@ -8,10 +8,6 @@ export function renderCtaSection(): string {
           <div class="rocket-glow"></div>
           
           <div style="position: relative; z-index: 1; max-width: 780px; margin: 0 auto;">
-            <div class="badge" style="background: rgba(255, 255, 255, 0.12); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.25); margin-bottom: 1.25rem;">
-              <span>FINAL CTA</span>
-            </div>
-
             <h2 class="rocket-cta-title" style="margin-bottom: 1.25rem;">
               Run your business smarter.
             </h2>
