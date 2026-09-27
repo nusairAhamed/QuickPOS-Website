@@ -2438,6 +2438,9 @@
   .hardware-hotspot-item .hotspot-card {
     display: none !important;
   }
+  .hardware-info-card {
+    display: block !important;
+  }
   .hardware-selector-bar {
     gap: 0.5rem;
     margin-top: 1.5rem;
@@ -2449,6 +2452,7 @@
 }
 
 .hardware-info-card {
+  display: none;
   margin: 1.5rem auto 0;
   max-width: 580px;
   background: var(--bg-surface-elevated);
