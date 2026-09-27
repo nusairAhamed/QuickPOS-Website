@@ -1089,9 +1089,10 @@
   display: block;
 }
 
-/* Dashcom Iconic Rocket CTA Banner */
+/* Dashcom Iconic Rocket CTA Banner & Call to Action Section */
+.section-cta,
 .section-rocket-cta {
-  padding: 5rem 0;
+  padding: 5.5rem 0 6.5rem;
 }
 
 .rocket-cta-card {
@@ -2364,10 +2365,12 @@
   .section-command-stage,
   .section-hardware-agnostic,
   .section-data-isolation,
-  .section-pricing,
+  .section-pricing {
+    padding: 3.5rem 0 !important;
+  }
   .section-cta,
   .section-rocket-cta {
-    padding: 3.5rem 0 !important;
+    padding: 3.5rem 0 5.5rem !important;
   }
   .hero-section {
     padding: 3rem 0 2rem !important;
