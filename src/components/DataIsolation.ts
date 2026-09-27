@@ -82,7 +82,6 @@ export function renderDataIsolation(): string {
                 <!-- Connector Line 1 -->
                 <div class="arch-connector">
                   <div class="connector-line"></div>
-                  <div class="connector-arrow">↓</div>
                 </div>
 
                 <!-- Tier 2: Dedicated Database Schema -->
@@ -104,7 +103,6 @@ export function renderDataIsolation(): string {
                 <!-- Connector Line 2 -->
                 <div class="arch-connector">
                   <div class="connector-line"></div>
-                  <div class="connector-arrow">↓</div>
                 </div>
 
                 <!-- Tier 3: Cold Storage -->

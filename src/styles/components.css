@@ -973,6 +973,7 @@
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .pricing-amount-row {
@@ -1631,6 +1632,8 @@
   border: 1px solid rgba(59, 130, 246, 0.3);
   padding: 0.15rem 0.45rem;
   border-radius: 4px;
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .isolation-features-row {
@@ -1686,11 +1689,14 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 0.75rem;
   font-family: var(--font-sans);
+  gap: 0.75rem;
+  min-width: 0;
 }
 
 .terminal-dots {
   display: flex;
   gap: 6px;
+  flex-shrink: 0;
 }
 
 .terminal-dots .dot {
@@ -1709,6 +1715,10 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-size: 0.72rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .terminal-status {
@@ -1719,6 +1729,8 @@
   font-weight: 700;
   color: #34D399;
   letter-spacing: 0.05em;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .terminal-status .pulse-dot {
@@ -1727,6 +1739,7 @@
   border-radius: 50%;
   background: #10B981;
   box-shadow: 0 0 8px #10B981;
+  flex-shrink: 0;
 }
 
 .arch-tiers-list {
@@ -1831,6 +1844,10 @@
   width: 2px;
   height: 100%;
   background: linear-gradient(180deg, rgba(99, 102, 241, 0.6) 0%, rgba(59, 130, 246, 0.6) 100%);
+}
+
+.connector-arrow {
+  display: none !important;
 }
 
 .arch-terminal-footer {
@@ -1998,6 +2015,10 @@
 .deep-dive-text {
   display: flex;
   flex-direction: column;
+}
+
+.deep-dive-text .section-subtitle {
+  margin-bottom: 2rem;
 }
 
 .feature-check-list {
@@ -2327,8 +2348,12 @@
     grid-template-columns: repeat(2, 1fr) !important;
   }
   .data-isolation-card {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: minmax(0, 1fr) !important;
     padding: 2.25rem !important;
+  }
+  .isolation-info-col,
+  .isolation-diagram-col {
+    min-width: 0 !important;
   }
 }
 
@@ -2350,37 +2375,53 @@
 
   /* Command Stage & Tabs */
   .tab-nav-wrapper {
-    justify-content: flex-start !important;
-    padding: 0 0.5rem 0.5rem !important;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    justify-content: center !important;
+    overflow-x: visible !important;
+    padding: 0 !important;
+    margin-bottom: 1.25rem !important;
   }
   .tab-nav-wrapper::-webkit-scrollbar {
     display: none;
   }
   .tab-nav-container {
-    width: max-content !important;
+    width: 100% !important;
+    max-width: 540px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    border-radius: 1.25rem !important;
+    gap: 0.4rem !important;
+    padding: 0.4rem !important;
   }
   .tab-nav-btn {
-    padding: 0.5rem 0.95rem;
-    font-size: 0.8rem;
+    padding: 0.45rem 0.85rem !important;
+    font-size: 0.78rem !important;
+    gap: 0.35rem !important;
   }
 
   .stage-subnav-wrapper {
-    justify-content: flex-start !important;
-    padding: 0 0.5rem 0.25rem !important;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    justify-content: center !important;
+    overflow-x: visible !important;
+    padding: 0 !important;
+    margin-bottom: 1.5rem !important;
   }
   .stage-subnav-wrapper::-webkit-scrollbar {
     display: none;
   }
   .stage-subnav-container {
-    width: max-content !important;
+    width: 100% !important;
+    max-width: 540px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    border-radius: 1.25rem !important;
+    gap: 0.35rem !important;
+    padding: 0.35rem !important;
   }
   .stage-subnav-pill {
-    padding: 0.35rem 0.75rem;
-    font-size: 0.75rem;
+    padding: 0.35rem 0.7rem !important;
+    font-size: 0.72rem !important;
+    text-align: center !important;
   }
 
   .stage-slider-container {
@@ -2440,19 +2481,27 @@
 @media (max-width: 640px) {
   /* Titlebars */
   .window-titlebar {
-    padding: 0.5rem 0.75rem !important;
-    gap: 0.4rem !important;
+    padding: 0.55rem 0.85rem !important;
+    gap: 0.5rem !important;
+    justify-content: space-between !important;
+    min-height: 2.1rem !important;
   }
   .window-dots {
+    display: flex !important;
+    gap: 5px !important;
+    flex-shrink: 0 !important;
+  }
+  .window-dot {
+    width: 9px !important;
+    height: 9px !important;
+  }
+  .window-address-bar {
     display: none !important;
   }
   .stage-titlebar-badge {
     font-size: 0.68rem !important;
     padding: 0.2rem 0.5rem !important;
-  }
-  .window-address-bar {
-    padding: 0.2rem 0.55rem !important;
-    font-size: 0.72rem !important;
+    flex-shrink: 0 !important;
   }
 
   .stage-slider-arrow {
@@ -2470,45 +2519,138 @@
   }
 
   /* Data Isolation */
+  /* Data Isolation */
   .data-isolation-card {
-    padding: 1.75rem 1rem !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    padding: 1.5rem 1rem !important;
     border-radius: 1.25rem !important;
-    gap: 1.75rem !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .isolation-info-col,
+  .isolation-diagram-col {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
   }
   .isolation-heading {
-    font-size: 1.75rem !important;
+    font-size: clamp(1.35rem, 5.2vw, 1.65rem) !important;
+    line-height: 1.25 !important;
   }
   .isolation-description {
-    font-size: 0.9rem !important;
-    margin-bottom: 1.5rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.65 !important;
+    margin-bottom: 1.25rem !important;
   }
-  .arch-tiers-list {
-    padding: 0.75rem !important;
+  .isolation-code-pill {
+    display: inline-block !important;
+    white-space: nowrap !important;
+    font-size: 0.85em !important;
   }
-  .arch-tier-item {
+  .isolation-features-row {
+    gap: 0.75rem !important;
+    width: 100% !important;
+  }
+  .isolation-feature-item {
+    font-size: 0.75rem !important;
+    letter-spacing: 0.02em !important;
+    gap: 0.6rem !important;
+    min-width: 0 !important;
+  }
+  .isolation-feature-item span {
+    min-width: 0 !important;
+    line-height: 1.35 !important;
+    word-break: break-word !important;
+  }
+  .arch-terminal-window {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  .arch-terminal-header {
     padding: 0.65rem 0.75rem !important;
     gap: 0.5rem !important;
+    justify-content: flex-start !important;
+    min-width: 0 !important;
+  }
+  .terminal-dots {
+    gap: 5px !important;
+    flex-shrink: 0 !important;
+  }
+  .terminal-dots .dot {
+    width: 8px !important;
+    height: 8px !important;
+  }
+  .terminal-title {
+    font-size: 0.65rem !important;
+    letter-spacing: 0.03em !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    min-width: 0 !important;
+  }
+  .terminal-status {
+    display: none !important;
+  }
+  .arch-tiers-list {
+    padding: 0.65rem !important;
+  }
+  .arch-tier-item {
+    padding: 0.6rem 0.65rem !important;
+    gap: 0.45rem !important;
+    min-width: 0 !important;
   }
   .arch-tier-icon {
-    width: 2rem !important;
-    height: 2rem !important;
+    width: 1.85rem !important;
+    height: 1.85rem !important;
+    flex-shrink: 0 !important;
+  }
+  .arch-tier-content {
+    min-width: 0 !important;
+    flex: 1 1 0 !important;
+  }
+  .arch-tier-label {
+    font-size: 0.65rem !important;
   }
   .arch-tier-code {
-    font-size: 0.75rem !important;
+    font-size: 0.7rem !important;
+    min-width: 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
   .arch-tier-badge {
-    font-size: 0.6rem !important;
+    font-size: 0.58rem !important;
     padding: 0.15rem 0.35rem !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
   }
   .arch-terminal-footer {
-    padding: 0.5rem 0.75rem !important;
-    font-size: 0.65rem !important;
+    padding: 0.55rem 0.75rem !important;
+    font-size: 0.62rem !important;
+    line-height: 1.4 !important;
+    min-width: 0 !important;
+  }
+  .arch-terminal-footer svg {
+    flex-shrink: 0 !important;
+  }
+  .arch-terminal-footer span {
+    min-width: 0 !important;
+    word-break: break-word !important;
   }
 
   /* Pricing */
   .pricing-main-card {
-    padding: 2rem 1.25rem !important;
+    padding: 2.75rem 1.25rem 2rem !important;
     border-radius: 1.25rem !important;
+  }
+  .pricing-card-badge {
+    font-size: 0.72rem !important;
+    padding: 0.3rem 0.9rem !important;
+    white-space: nowrap !important;
+    top: -12px !important;
   }
   .plan-features-grid {
     grid-template-columns: 1fr !important;
@@ -2535,6 +2677,9 @@
   }
 
   /* Deep Dives */
+  .deep-dive-text .section-subtitle {
+    margin-bottom: 1.5rem !important;
+  }
   .feature-check-pill {
     padding: 0.85rem 1rem !important;
   }
