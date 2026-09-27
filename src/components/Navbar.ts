@@ -34,11 +34,6 @@ export function renderNavbar(): string {
               </svg>
             </button>
 
-            <!-- Sign In Link -->
-            <a href="https://nusair-staging.quickpos.lk/login" target="_blank" rel="noopener" class="btn btn-ghost btn-sm hide-on-mobile">
-              <span>Sign In</span>
-            </a>
-
             <!-- Primary CTA -->
             <button class="btn btn-primary btn-sm open-trial-modal-btn">
               <span>Start Free Trial</span>
@@ -69,7 +64,6 @@ export function renderNavbar(): string {
           <li><a href="#hardware" class="mobile-nav-link nav-link">Hardware</a></li>
           <li><a href="#pricing" class="mobile-nav-link nav-link">Pricing</a></li>
           <li><a href="#contact" class="mobile-nav-link nav-link">Contact & Demo</a></li>
-          <li><a href="https://nusair-staging.quickpos.lk/login" target="_blank" class="mobile-nav-link nav-link">Sign In</a></li>
         </ul>
         <button class="btn btn-primary btn-sm open-trial-modal-btn" style="width: 100%;">Start Free Trial</button>
       </div>
