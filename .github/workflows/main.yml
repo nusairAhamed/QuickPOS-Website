@@ -71,7 +71,7 @@ jobs:
           elif [ "${GITHUB_REF_NAME}" = "staging" ]; then
             echo "app_path=/var/www/quickpos-website-staging" >> "$GITHUB_OUTPUT"
             echo "environment=staging" >> "$GITHUB_OUTPUT"
-            echo "url=https://staging.quickpos.lk" >> "$GITHUB_OUTPUT"
+            echo "url=https://staging-website.quickpos.lk" >> "$GITHUB_OUTPUT"
 
           else
             echo "Unsupported branch: ${GITHUB_REF_NAME}"
