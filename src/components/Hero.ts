@@ -121,11 +121,8 @@ export function renderHero(): string {
           </div>
         </div>
 
-        <!-- Built For: Target Users Row -->
-        <div style="margin-top: 4.5rem; padding-top: 2rem; border-top: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-          <span style="font-size: 0.8rem; font-weight: 800; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase;">
-            BUILT FOR:
-          </span>
+        <!-- Target Verticals Pills -->
+        <div class="hero-verticals-pills">
           <span class="badge badge-pill">✦ Supermarkets</span>
           <span class="badge badge-pill">✦ Mini-marts</span>
           <span class="badge badge-pill">✦ Hardware stores</span>

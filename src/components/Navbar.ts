@@ -17,12 +17,11 @@ export function renderNavbar(): string {
 
           <!-- Desktop Navigation -->
           <ul class="nav-links-desktop">
-            <li><a href="#product" class="nav-link">Product</a></li>
-            <li><a href="#capabilities" class="nav-link">Capabilities</a></li>
-            <li><a href="#command-stage" class="nav-link">Interface</a></li>
+            <li><a href="#features" class="nav-link">Features</a></li>
+            <li><a href="#command-stage" class="nav-link">See It in Action</a></li>
             <li><a href="#hardware" class="nav-link">Hardware</a></li>
             <li><a href="#pricing" class="nav-link">Pricing</a></li>
-            <li><a href="#contact" class="nav-link">Contact & Demo</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
           </ul>
 
           <!-- Action Buttons -->
@@ -58,12 +57,11 @@ export function renderNavbar(): string {
       <!-- Mobile Navigation Drawer -->
       <div id="mobile-drawer" class="mobile-drawer" style="display: none; padding: 1.5rem; background: var(--bg-surface); border-bottom: 1px solid var(--border-subtle);">
         <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
-          <li><a href="#product" class="mobile-nav-link nav-link">Product</a></li>
-          <li><a href="#capabilities" class="mobile-nav-link nav-link">Capabilities</a></li>
-          <li><a href="#command-stage" class="mobile-nav-link nav-link">Interface</a></li>
+          <li><a href="#features" class="mobile-nav-link nav-link">Features</a></li>
+          <li><a href="#command-stage" class="mobile-nav-link nav-link">See It in Action</a></li>
           <li><a href="#hardware" class="mobile-nav-link nav-link">Hardware</a></li>
           <li><a href="#pricing" class="mobile-nav-link nav-link">Pricing</a></li>
-          <li><a href="#contact" class="mobile-nav-link nav-link">Contact & Demo</a></li>
+          <li><a href="#contact" class="mobile-nav-link nav-link">Contact</a></li>
         </ul>
         <button class="btn btn-primary btn-sm open-trial-modal-btn" style="width: 100%;">Start Free Trial</button>
       </div>

@@ -54,15 +54,15 @@ export function renderPricingSection(): string {
             </div>
             <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-primary);">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>30-Sec SheetJS Excel Import</span>
+              <span>Instant Excel & CSV Product Import</span>
             </div>
             <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-primary);">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Real-Time AVCO P&L Reports</span>
+              <span>Real-Time Profit & Loss Reports</span>
             </div>
             <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-primary);">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Dedicated Database Isolation</span>
+              <span>Private Database Isolation & Backups</span>
             </div>
           </div>
 

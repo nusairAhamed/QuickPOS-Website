@@ -12,35 +12,61 @@ export function renderDataIsolation(): string {
           <div class="isolation-info-col">
             <div class="isolation-badge">
               <span class="isolation-badge-dot"></span>
-              <span>SECURITY</span>
+              <span>SECURITY & PRIVACY</span>
             </div>
 
             <h2 class="isolation-heading">
-              Your business data <span class="isolation-heading-gradient">stays yours.</span>
+              Your business data <span class="isolation-heading-gradient">stays private.</span>
             </h2>
 
             <p class="isolation-description">
-              Unlike multi-tenant apps that mix hundreds of retailers into one database table with a shared column, QuickPOS physically partitions every shop into an isolated database (<code class="isolation-code-pill">pos_tenant_{id}</code>). Your financial records and customer debts are strictly quarantined.
+              Your sales, customers, stock and financial records are kept separate from other businesses and protected with automated backups.
             </p>
 
             <div class="isolation-features-row">
-              <div class="isolation-feature-item">
-                <div class="isolation-feature-check">
+              <div class="isolation-feature-item" style="align-items: flex-start;">
+                <div class="isolation-feature-check" style="margin-top: 0.15rem;">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                 </div>
-                <span>AUTOMATED NIGHTLY BACKUPS</span>
+                <div>
+                  <div style="font-weight: 700; color: #F1F5F9; font-size: 0.95rem; margin-bottom: 0.2rem;">Your data stays separate</div>
+                  <div style="font-size: 0.85rem; color: #94A3B8; font-weight: 400; line-height: 1.4;">Your store's information isn't mixed with other businesses.</div>
+                </div>
               </div>
 
-              <div class="isolation-feature-item">
-                <div class="isolation-feature-check">
+              <div class="isolation-feature-item" style="align-items: flex-start;">
+                <div class="isolation-feature-check" style="margin-top: 0.15rem;">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                 </div>
-                <span>ROLE-BASED ACCESS (OWNER VS CASHIER)</span>
+                <div>
+                  <div style="font-weight: 700; color: #F1F5F9; font-size: 0.95rem; margin-bottom: 0.2rem;">Automatic backups</div>
+                  <div style="font-size: 0.85rem; color: #94A3B8; font-weight: 400; line-height: 1.4;">Your business data is backed up automatically.</div>
+                </div>
               </div>
+
+              <div class="isolation-feature-item" style="align-items: flex-start;">
+                <div class="isolation-feature-check" style="margin-top: 0.15rem;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <div style="font-weight: 700; color: #F1F5F9; font-size: 0.95rem; margin-bottom: 0.2rem;">Controlled access</div>
+                  <div style="font-size: 0.85rem; color: #94A3B8; font-weight: 400; line-height: 1.4;">Give employees access only to the parts of QuickPOS they need.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Technical Credibility Badge -->
+            <div class="isolation-credibility-note" style="margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; color: #94A3B8;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              <span>Built with isolated databases, encrypted connections and role-based access.</span>
             </div>
           </div>
 

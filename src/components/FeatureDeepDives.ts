@@ -1,8 +1,11 @@
-// Feature Deep Dives: 4 Alternating Feature Sections (Exact user headings)
+// Feature Deep Dives: 4 Alternating Feature Sections (Standardized Business-First Copy)
 
 export function renderFeatureDeepDives(): string {
   return `
-    <section class="section-deep-dives" id="capabilities">
+    <section class="section-deep-dives" id="features" style="position: relative;">
+      <!-- Hidden Anchor for legacy link compatibility -->
+      <span id="capabilities" style="position: absolute; top: -80px;"></span>
+      
       <div class="container">
         <!-- ================= ROW 1: POS ================= -->
         <div class="deep-dive-row">
@@ -10,18 +13,18 @@ export function renderFeatureDeepDives(): string {
           <div class="deep-dive-text">
             <div class="section-tag">01 / POS</div>
             <h2 class="section-title text-left">
-              Sell faster. Even with lines out the door.
+              Sell faster. Keep the queue moving.
             </h2>
             <p class="section-subtitle text-left">
-              Designed for speed at the counter. Sub-second barcode scanning, single-key item search, dual kg/rupee bulk calculations, and immediate thermal receipt printing.
+              Search products, scan barcodes, apply discounts and print receipts without slowing down the counter.
             </p>
             <div class="feature-check-list">
               <div class="feature-check-pill">
                 <div class="feature-check-icon">✓</div>
                 <div>
-                  <strong class="check-pill-title">Dual Weight & Rupee Bulk Calculator</strong>
+                  <strong class="check-pill-title">Fast Barcode Scanning</strong>
                   <p class="check-pill-desc">
-                    Enter grams or enter "Rs. 150 worth of Dhal" — QuickPOS back-calculates exact weight down to 2 decimals.
+                    Scan products and add them to the bill instantly.
                   </p>
                 </div>
               </div>
@@ -29,9 +32,9 @@ export function renderFeatureDeepDives(): string {
               <div class="feature-check-pill">
                 <div class="feature-check-icon">✓</div>
                 <div>
-                  <strong class="check-pill-title">Hold & Instant Resume</strong>
+                  <strong class="check-pill-title">Hold & Resume Bills</strong>
                   <p class="check-pill-desc">
-                    Park an incomplete cart when a customer grabs an extra item; serve the next person with zero delay.
+                    Pause an unfinished sale and come back to it later.
                   </p>
                 </div>
               </div>
@@ -39,12 +42,20 @@ export function renderFeatureDeepDives(): string {
               <div class="feature-check-pill">
                 <div class="feature-check-icon">✓</div>
                 <div>
-                  <strong class="check-pill-title">Automatic Drawer Kickout & Receipt Print</strong>
+                  <strong class="check-pill-title">Fast Checkout</strong>
                   <p class="check-pill-desc">
-                    Fast ESC/POS 80mm and 58mm printer integration via browser print or OS Tray.
+                    Complete payments and print receipts in seconds.
                   </p>
                 </div>
               </div>
+            </div>
+
+            <!-- Technical Credibility Badge -->
+            <div style="margin-top: 1.5rem;">
+              <span style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--text-muted); background: var(--bg-surface); padding: 0.35rem 0.85rem; border-radius: 9999px; border: 1px solid var(--border-subtle); font-weight: 500;">
+                <span style="color: var(--brand-primary); font-weight: 700;">•</span>
+                <span>Built for high-volume retail counters</span>
+              </span>
             </div>
           </div>
 
@@ -78,7 +89,7 @@ export function renderFeatureDeepDives(): string {
                 <span>quickpos.lk/products — Product Catalog</span>
               </div>
             </div>
-            <img src="/assets/08_products_catalog.png" alt="QuickPOS Product Catalog & Excel SheetJS Parser" class="window-screen-img" />
+            <img src="/assets/08_products_catalog.png" alt="QuickPOS Product Catalog & Excel Import" class="window-screen-img" />
           </div>
 
           <!-- Right Text -->
@@ -88,15 +99,15 @@ export function renderFeatureDeepDives(): string {
               Know exactly what you have.
             </h2>
             <p class="section-subtitle text-left">
-              No more typing thousands of barcodes by hand. Our built-in SheetJS parser maps Sinhala and English retail columns automatically from existing spreadsheets.
+              Track every product, variant and stock movement without relying on spreadsheets.
             </p>
             <div class="feature-check-list">
               <div class="feature-check-pill">
                 <div class="feature-check-icon">✓</div>
                 <div>
-                  <strong class="check-pill-title">Automated Reorder Point Alerts</strong>
+                  <strong class="check-pill-title">Import Your Existing Excel Sheet</strong>
                   <p class="check-pill-desc">
-                    Dashboard flags fast-moving items before they run out so you can issue purchase orders in advance.
+                    Bring your product list into QuickPOS without starting from scratch.
                   </p>
                 </div>
               </div>
@@ -104,9 +115,9 @@ export function renderFeatureDeepDives(): string {
               <div class="feature-check-pill">
                 <div class="feature-check-icon">✓</div>
                 <div>
-                  <strong class="check-pill-title">Physical Barcode Stocktakes & Audits</strong>
+                  <strong class="check-pill-title">Know When Stock Is Running Low</strong>
                   <p class="check-pill-desc">
-                    Audit aisles with a barcode scanner; hear confirmation beeps, and auto-reconcile shrinkage variance.
+                    Get alerts before popular products run out so you can reorder in advance.
                   </p>
                 </div>
               </div>
@@ -114,12 +125,20 @@ export function renderFeatureDeepDives(): string {
               <div class="feature-check-pill">
                 <div class="feature-check-icon">✓</div>
                 <div>
-                  <strong class="check-pill-title">Clean Variant Grouping</strong>
+                  <strong class="check-pill-title">Audit Your Stock</strong>
                   <p class="check-pill-desc">
-                    Group items by size, color, or packaging without cluttering the primary cashier register.
+                    Compare physical stock with your system and identify differences quickly.
                   </p>
                 </div>
               </div>
+            </div>
+
+            <!-- Technical Credibility Badge -->
+            <div style="margin-top: 1.5rem;">
+              <span style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--text-muted); background: var(--bg-surface); padding: 0.35rem 0.85rem; border-radius: 9999px; border: 1px solid var(--border-subtle); font-weight: 500;">
+                <span style="color: var(--brand-primary); font-weight: 700;">•</span>
+                <span>Import Excel / CSV files • Automatic variant grouping</span>
+              </span>
             </div>
           </div>
         </div>
@@ -130,18 +149,18 @@ export function renderFeatureDeepDives(): string {
           <div class="deep-dive-text">
             <div class="section-tag">03 / CREDIT</div>
             <h2 class="section-title text-left">
-              Turn your Niyama Potha into a digital ledger.
+              Replace your Niyama Potha with a digital credit ledger.
             </h2>
             <p class="section-subtitle text-left">
-              Replace forgotten credit notebooks with a digital ledger that protects your working capital. Set strict customer ceilings, review debt aging, and collect receivables faster.
+              Know who owes you, how much they owe and when it's due—without searching through notebooks.
             </p>
             <div class="feature-check-list">
               <div class="feature-check-pill">
                 <div class="feature-check-icon">✓</div>
                 <div>
-                  <strong class="check-pill-title">Customer 360 & Approved Credit Limits</strong>
+                  <strong class="check-pill-title">Every Customer's Balance in One Place</strong>
                   <p class="check-pill-desc">
-                    Cashiers cannot exceed owner-approved credit ceilings. View lifetime spend and current debt at a glance.
+                    See all customer balances, contact details and total credit owed across your store.
                   </p>
                 </div>
               </div>
@@ -149,9 +168,9 @@ export function renderFeatureDeepDives(): string {
               <div class="feature-check-pill">
                 <div class="feature-check-icon">✓</div>
                 <div>
-                  <strong class="check-pill-title">Credit Aging Breakdown (0–90+ Days)</strong>
+                  <strong class="check-pill-title">Credit Limits and Payment History</strong>
                   <p class="check-pill-desc">
-                    Close visualization of balances by age to identify delinquent accounts before debts go stale.
+                    Set strict credit ceilings so cashiers cannot over-extend debt; track complete payment records.
                   </p>
                 </div>
               </div>
@@ -159,12 +178,30 @@ export function renderFeatureDeepDives(): string {
               <div class="feature-check-pill">
                 <div class="feature-check-icon">✓</div>
                 <div>
-                  <strong class="check-pill-title">1-Click WhatsApp Payment Reminders</strong>
+                  <strong class="check-pill-title">See Overdue Customers Instantly</strong>
                   <p class="check-pill-desc">
-                    Send polite, itemized statements and arrears to customer phones with a single tap.
+                    Flag aging accounts (0–90+ days) before credit goes stale.
                   </p>
                 </div>
               </div>
+
+              <div class="feature-check-pill">
+                <div class="feature-check-icon">✓</div>
+                <div>
+                  <strong class="check-pill-title">Send Payment Reminders Through WhatsApp</strong>
+                  <p class="check-pill-desc">
+                    Send polite, itemized statements and balance reminders to customer phones in one tap.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Technical Credibility Badge -->
+            <div style="margin-top: 1.5rem;">
+              <span style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--text-muted); background: var(--bg-surface); padding: 0.35rem 0.85rem; border-radius: 9999px; border: 1px solid var(--border-subtle); font-weight: 500;">
+                <span style="color: var(--brand-primary); font-weight: 700;">•</span>
+                <span>WhatsApp Business integration • 0–90+ days credit aging breakdown</span>
+              </span>
             </div>
           </div>
 
@@ -208,15 +245,15 @@ export function renderFeatureDeepDives(): string {
               Know if your shop is actually making money.
             </h2>
             <p class="section-subtitle text-left">
-              Stop guessing your margins at month-end. QuickPOS computes accurate Weighted Average Costing (AVCO), Gross and Net P&L, and gives you total visibility over supplier cheques.
+              See your sales, expenses, stock costs and profit in one place—without calculating everything manually.
             </p>
             <div class="feature-check-list">
               <div class="feature-check-pill">
                 <div class="feature-check-icon">✓</div>
                 <div>
-                  <strong class="check-pill-title">Real-Time AVCO Profit & Loss</strong>
+                  <strong class="check-pill-title">See Your Real Profit</strong>
                   <p class="check-pill-desc">
-                    Factored purchase costs yield exact gross operating expenses (rent, utilities, wages) from daily revenues.
+                    Track revenue, costs and expenses together so you always know your true net margins.
                   </p>
                 </div>
               </div>
@@ -224,9 +261,19 @@ export function renderFeatureDeepDives(): string {
               <div class="feature-check-pill">
                 <div class="feature-check-icon">✓</div>
                 <div>
-                  <strong class="check-pill-title">Automated Cheque Potha Register</strong>
+                  <strong class="check-pill-title">Know What Your Stock Is Costing You</strong>
                   <p class="check-pill-desc">
-                    Tracks customer and vendor cheques across Pending → Due → Cleared with 7-day maturity warnings.
+                    QuickPOS automatically calculates your stock cost as you sell and restock.
+                  </p>
+                </div>
+              </div>
+
+              <div class="feature-check-pill">
+                <div class="feature-check-icon">✓</div>
+                <div>
+                  <strong class="check-pill-title">Track Outstanding Cheques</strong>
+                  <p class="check-pill-desc">
+                    Know what's pending, cleared and overdue with 7-day maturity warnings.
                   </p>
                 </div>
               </div>
@@ -236,10 +283,18 @@ export function renderFeatureDeepDives(): string {
                 <div>
                   <strong class="check-pill-title">Cashier Shift Float Reconciliation</strong>
                   <p class="check-pill-desc">
-                    Enforced blind cash count prevents skimming and leakage.
+                    Enforced blind cash count prevents skimming and leakage at shift close.
                   </p>
                 </div>
               </div>
+            </div>
+
+            <!-- Technical Credibility Badge -->
+            <div style="margin-top: 1.5rem;">
+              <span style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--text-muted); background: var(--bg-surface); padding: 0.35rem 0.85rem; border-radius: 9999px; border: 1px solid var(--border-subtle); font-weight: 500;">
+                <span style="color: var(--brand-primary); font-weight: 700;">•</span>
+                <span>Weighted Average Costing (AVCO) supported • Real-time P&L • Cheque Potha register</span>
+              </span>
             </div>
           </div>
         </div>

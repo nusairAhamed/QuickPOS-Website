@@ -58,7 +58,7 @@ export const STAGE_TABS: Record<string, StageTab> = {
         label: '1. Products Catalog',
         img: '/assets/05_products_catalog.png',
         url: 'https://lanka-grocery.quickpos.lk/products',
-        title: 'Inventory & SheetJS Auto-Import — /products',
+        title: 'Inventory & Instant Excel Import — /products',
         desc: 'Auto-detects Sinhala and English retail columns, reorder thresholds, and variant hierarchy without manual data entry.'
       },
       {
@@ -148,11 +148,11 @@ export const STAGE_TABS: Record<string, StageTab> = {
     slides: [
       {
         id: 'pnl-1',
-        label: '1. Real-Time AVCO P&L',
+        label: '1. Profit & Loss Statement',
         img: '/assets/20_profit_loss_report.png',
         url: 'https://lanka-grocery.quickpos.lk/reports/profit-loss',
-        title: 'Real-Time AVCO Executive P&L — /reports/profit-loss',
-        desc: 'Weighted Average Costing (AVCO), live Gross Revenue, return adjustments, operating expenses, and net profit margins.'
+        title: 'Executive Profit & Loss Statement — /reports/profit-loss',
+        desc: 'Track live gross revenue, stock costs, operating expenses, and net profit margins. Weighted Average Costing (AVCO) supported.'
       },
       {
         id: 'pnl-2',
