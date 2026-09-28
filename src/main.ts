@@ -3,6 +3,7 @@ import './styles/components.css';
 
 import { initTheme, toggleTheme } from './theme';
 import { initAnimations } from './animations';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { renderNavbar } from './components/Navbar';
 import { renderHero } from './components/Hero';
@@ -58,13 +59,37 @@ function initInteractions(): void {
       const isVisible = mobileDrawer.style.display === 'block';
       mobileDrawer.style.display = isVisible ? 'none' : 'block';
     });
-
-    document.querySelectorAll('.mobile-nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileDrawer.style.display = 'none';
-      });
-    });
   }
+
+  // Smooth Scroll & Anchor Jump for Navigation Links (Desktop & Mobile)
+  const navAnchorLinks = document.querySelectorAll<HTMLAnchorElement>('.nav-link, .mobile-nav-link, a[href^="#"]');
+  navAnchorLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#') || href === '#') return;
+
+      const targetEl = document.querySelector(href);
+      if (targetEl) {
+        e.preventDefault();
+
+        // Close mobile drawer if open
+        if (mobileDrawer && mobileDrawer.style.display === 'block') {
+          mobileDrawer.style.display = 'none';
+        }
+
+        // Native smooth scroll into view respecting CSS scroll-margin-top
+        targetEl.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+
+        // Update URL hash cleanly without causing a jump
+        if (window.location.hash !== href) {
+          history.pushState(null, '', href);
+        }
+      }
+    });
+  });
 
   // Interactive Command Stage Tabs & Multi-Image Slider with Autoplay & Progress Bar
   let currentStageKey = 'stage-pos';
@@ -329,9 +354,26 @@ function initInteractions(): void {
     });
   }
 
-  // Hardware Hotspot Interaction Setup
   const hotspotItems = document.querySelectorAll('.hardware-hotspot-item');
   const hotspotSelectorBtns = document.querySelectorAll('.hardware-selector-btn');
+  const hardwareData: Record<string, { title: string; desc: string }> = {
+    pc: {
+      title: 'Standard PC or Touch POS',
+      desc: 'Runs in Chrome, Edge, or Firefox. Works with zero local software installs or driver conflicts.'
+    },
+    printers: {
+      title: 'Thermal Printers',
+      desc: 'Full ESC/POS support for 80mm and 58mm thermal printers (Epson, Xprinter, Rongta, Sewoo).'
+    },
+    scanners: {
+      title: 'Barcode Scanners',
+      desc: 'Works with any standard USB or wireless handheld barcode scanner via keyboard emulation.'
+    },
+    drawers: {
+      title: 'Cash Drawers',
+      desc: 'RJ-11 connection to your receipt printer kicks the drawer open on cash sales automatically.'
+    }
+  };
 
   function setActiveHotspot(hotspotKey: string): void {
     hotspotItems.forEach(item => {
@@ -343,6 +385,14 @@ function initInteractions(): void {
       const isTarget = btn.getAttribute('data-target-hotspot') === hotspotKey;
       btn.classList.toggle('active', isTarget);
     });
+
+    const info = hardwareData[hotspotKey];
+    if (info) {
+      const titleEl = document.getElementById('hardware-info-card-title');
+      const descEl = document.getElementById('hardware-info-card-desc');
+      if (titleEl) titleEl.innerText = info.title;
+      if (descEl) descEl.innerText = info.desc;
+    }
   }
 
   hotspotItems.forEach(item => {
@@ -410,8 +460,51 @@ function initInteractions(): void {
   }
 
   if (modalForm && trialSuccessMsg) {
-    modalForm.addEventListener('submit', (e) => {
+    const submitBtn = document.getElementById('trial-submit-btn') as HTMLButtonElement | null;
+
+    modalForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      const storeName = (document.getElementById('trial-store-name') as HTMLInputElement)?.value.trim() || '';
+      const subdomain = (document.getElementById('trial-subdomain') as HTMLInputElement)?.value.trim() || '';
+      const phone = (document.getElementById('trial-phone') as HTMLInputElement)?.value.trim() || '';
+
+      // Button loading state
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `
+          <span style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation: spin 0.8s linear infinite;">
+              <circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle>
+              <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"></path>
+            </svg>
+            Provisioning Vault...
+          </span>
+        `;
+      }
+
+      // Background webhook dispatch (Google Apps Script / n8n / custom webhook)
+      const webhookUrl = (window as unknown as { QUICKPOS_WEBHOOK_URL?: string }).QUICKPOS_WEBHOOK_URL ||
+        import.meta.env.VITE_LEAD_WEBHOOK_URL ||
+        'https://script.google.com/macros/s/AKfycbws65OYdHDvA6iPtpcIC6lX8tYZmTFZxe3TFkCbz7ZZMw05kfy_yxodY6wLF816yn-_UQ/exec';
+
+      if (webhookUrl) {
+        try {
+          await fetch(webhookUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              storeName,
+              subdomain,
+              phone,
+              timestamp: new Date().toISOString()
+            })
+          });
+        } catch (err) {
+          console.error('Lead webhook dispatch error:', err);
+        }
+      }
 
       // Launch celebratory confetti
       confetti({
@@ -425,8 +518,6 @@ function initInteractions(): void {
     });
   }
 }
-
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // 4. Initialize Everything on DOM Ready
 function main(): void {
@@ -448,9 +539,6 @@ function main(): void {
     ScrollTrigger.refresh();
   });
 
-  window.addEventListener('hashchange', () => {
-    setTimeout(() => ScrollTrigger.refresh(), 50);
-  });
 
   setTimeout(() => ScrollTrigger.refresh(), 300);
   setTimeout(() => ScrollTrigger.refresh(), 1000);

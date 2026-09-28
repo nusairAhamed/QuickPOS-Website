@@ -8,7 +8,7 @@ export function renderPricingSection(): string {
         <div class="section-header">
           <div class="section-tag">PRICING</div>
           <h2 class="section-title">
-            Start with a 30-Day Free Trial. Pay in Sri Lankan Rupees.
+            Start with a 30-Day Free Trial.<br class="pricing-title-br" />Pay in Sri Lankan Rupees.
           </h2>
           <p class="section-subtitle">
             No credit card required. Free store setup assistance included with every account.
@@ -39,7 +39,7 @@ export function renderPricingSection(): string {
           </div>
 
           <!-- Feature Grid -->
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem 1.5rem; text-align: left; margin: 2rem 0; padding: 1.5rem; background: var(--bg-surface-subtle); border-radius: 1rem; border: 1px solid var(--border-subtle);" class="plan-features-grid">
+          <div class="plan-features-grid">
             <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-primary);">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
               <span>Unlimited Register Transactions</span>
@@ -54,15 +54,15 @@ export function renderPricingSection(): string {
             </div>
             <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-primary);">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>30-Sec SheetJS Excel Import</span>
+              <span>Instant Excel & CSV Product Import</span>
             </div>
             <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-primary);">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Real-Time AVCO P&L Reports</span>
+              <span>Real-Time Profit & Loss Reports</span>
             </div>
             <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-primary);">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Dedicated Database Isolation</span>
+              <span>Private Database Isolation & Backups</span>
             </div>
           </div>
 
@@ -70,9 +70,6 @@ export function renderPricingSection(): string {
             <button class="btn btn-primary btn-lg open-trial-modal-btn" style="width: 100%;">
               <span>Start Free Trial</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </button>
-            <button class="btn btn-ghost btn-sm open-trial-modal-btn" style="color: var(--text-muted);">
-              View Detailed Plan Comparison →
             </button>
           </div>
         </div>

@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - staging
 
 permissions:
   contents: read
@@ -56,45 +57,84 @@ jobs:
           ssh-keyscan -H "${{ secrets.VPS_HOST }}" >> ~/.ssh/known_hosts
 
       # --------------------------------------------------
-      # 6. Prepare deployment directory
+      # 6. Set deployment environment
+      # --------------------------------------------------
+      - name: Set deployment variables
+        id: config
+        shell: bash
+        run: |
+          if [ "${GITHUB_REF_NAME}" = "main" ]; then
+            echo "app_path=/var/www/quickpos-website" >> "$GITHUB_OUTPUT"
+            echo "environment=production" >> "$GITHUB_OUTPUT"
+            echo "url=https://quickpos.lk" >> "$GITHUB_OUTPUT"
+
+          elif [ "${GITHUB_REF_NAME}" = "staging" ]; then
+            echo "app_path=/var/www/quickpos-website-staging" >> "$GITHUB_OUTPUT"
+            echo "environment=staging" >> "$GITHUB_OUTPUT"
+            echo "url=https://staging-website.quickpos.lk" >> "$GITHUB_OUTPUT"
+
+          else
+            echo "Unsupported branch: ${GITHUB_REF_NAME}"
+            exit 1
+          fi
+
+      # --------------------------------------------------
+      # 7. Prepare deployment directory
       # --------------------------------------------------
       - name: Prepare deployment directory
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_USER: ${{ secrets.VPS_USER }}
-          VPS_APP_PATH: ${{ secrets.VPS_APP_PATH }}
+          APP_PATH: ${{ steps.config.outputs.app_path }}
         run: |
           ssh \
             -i ~/.ssh/deploy_key \
             -o StrictHostKeyChecking=yes \
             "$VPS_USER@$VPS_HOST" \
-            "mkdir -p '$VPS_APP_PATH/dist'"
+            "mkdir -p '$APP_PATH/dist'"
 
       # --------------------------------------------------
-      # 7. Deploy built website
+      # 8. Deploy built website
       # --------------------------------------------------
       - name: Deploy website
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_USER: ${{ secrets.VPS_USER }}
-          VPS_APP_PATH: ${{ secrets.VPS_APP_PATH }}
+          APP_PATH: ${{ steps.config.outputs.app_path }}
         run: |
           rsync -avz --delete \
             -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes" \
             dist/ \
-            "$VPS_USER@$VPS_HOST:$VPS_APP_PATH/dist/"
+            "$VPS_USER@$VPS_HOST:$APP_PATH/dist/"
 
       # --------------------------------------------------
-      # 8. Verify deployment
+      # 9. Verify deployment
       # --------------------------------------------------
       - name: Verify deployment
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_USER: ${{ secrets.VPS_USER }}
-          VPS_APP_PATH: ${{ secrets.VPS_APP_PATH }}
+          APP_PATH: ${{ steps.config.outputs.app_path }}
+          ENVIRONMENT: ${{ steps.config.outputs.environment }}
         run: |
           ssh \
             -i ~/.ssh/deploy_key \
             -o StrictHostKeyChecking=yes \
             "$VPS_USER@$VPS_HOST" \
-            "test -f '$VPS_APP_PATH/dist/index.html' && echo 'QuickPOS website deployed successfully'"
+            "test -f '$APP_PATH/dist/index.html' && echo 'QuickPOS website deployed successfully to $ENVIRONMENT'"
+
+      # --------------------------------------------------
+      # 10. Deployment summary
+      # --------------------------------------------------
+      - name: Deployment summary
+        env:
+          ENVIRONMENT: ${{ steps.config.outputs.environment }}
+          URL: ${{ steps.config.outputs.url }}
+        run: |
+          echo "========================================"
+          echo " QuickPOS Website Deployment"
+          echo "========================================"
+          echo "Environment: $ENVIRONMENT"
+          echo "URL:         $URL"
+          echo "Branch:      $GITHUB_REF_NAME"
+          echo "========================================"

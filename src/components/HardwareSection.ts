@@ -7,9 +7,9 @@ export function renderHardwareSection(): string {
         <!-- Section Header -->
         <div class="section-header">
           <div class="section-tag">HARDWARE</div>
-          <h2 class="section-title">No expensive hardware upgrade required.</h2>
+          <h2 class="section-title">Use the hardware you already have.</h2>
           <p class="section-subtitle">
-            You don't need to replace your counter setup with proprietary screens. QuickPOS runs in any browser on standard PCs and connects to standard retail peripherals.
+            You don't need an expensive proprietary POS machine. QuickPOS works with the computers, printers and scanners you already use.
           </p>
         </div>
 
@@ -120,6 +120,27 @@ export function renderHardwareSection(): string {
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/></svg>
               <span>4. Cash Drawers</span>
             </button>
+          </div>
+
+          <!-- Active Hardware Details Card for Mobile & Touch Screen Clarity -->
+          <div class="hardware-info-card" id="hardware-info-card">
+            <div class="hardware-info-card-header">
+              <span class="badge-pulse-dot" style="width: 6px; height: 6px;"></span>
+              <h4 id="hardware-info-card-title">Standard PC or Touch POS</h4>
+            </div>
+            <p id="hardware-info-card-desc">
+              Runs in Chrome, Edge, or Firefox. Works with zero local software installs or driver conflicts.
+            </p>
+          </div>
+
+          <!-- Technical Credibility Tag -->
+          <div style="margin-top: 1.5rem; text-align: center;">
+            <span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.45rem 1.1rem; border-radius: 9999px; background: var(--bg-surface); border: 1px solid var(--border-subtle); font-size: 0.82rem; color: var(--text-muted); font-weight: 500; box-shadow: var(--shadow-sm);">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--brand-accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>ESC/POS compatible printers & standard USB / Wireless peripherals supported</span>
+            </span>
           </div>
         </div>
       </div>

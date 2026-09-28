@@ -51,7 +51,75 @@ export function initAnimations(): void {
     });
   }
 
-  // 3. Deep Dive Alternating Rows Fade & Slide
+  // 3. Deep Dive Hero Showcases - Granular Element-by-Element Smooth Reveal
+  document.querySelectorAll<HTMLElement>('.deep-dive-showcase').forEach(showcase => {
+    // 3a. Header (Tag, Title, and Subtitle) Staggered Slide-Up
+    const header = showcase.querySelector('.deep-dive-showcase-header');
+    if (header) {
+      const leftItems = header.querySelectorAll('.showcase-header-left > *');
+      const rightSubtitle = header.querySelector('.showcase-header-right .section-subtitle');
+      const headerElements = [...Array.from(leftItems), ...(rightSubtitle ? [rightSubtitle] : [])];
+
+      gsap.from(headerElements, {
+        scrollTrigger: {
+          trigger: header,
+          start: 'top 88%',
+          once: true
+        },
+        opacity: 0,
+        y: 28,
+        stagger: 0.1,
+        duration: 0.85,
+        ease: 'power3.out',
+        clearProps: 'opacity,transform'
+      });
+    }
+
+    // 3b. 3D Centerpiece Visual and Feature Cards Synchronized Reveal
+    const stage = showcase.querySelector('.feature-3d-stage-hero');
+    const cards = showcase.querySelectorAll('.showcase-feature-grid .feature-check-pill');
+    const img = stage?.querySelector<HTMLImageElement>('img');
+
+    // Ensure ScrollTrigger recalibrates if lazy image finishes loading
+    if (img && !img.complete) {
+      img.addEventListener('load', () => {
+        ScrollTrigger.refresh();
+      }, { once: true });
+    }
+
+    if (stage) {
+      const stageTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: stage,
+          start: 'top 86%',
+          once: true
+        }
+      });
+
+      // 3D Visual Centerpiece entrance
+      stageTl.from(stage, {
+        opacity: 0,
+        y: 36,
+        duration: 0.85,
+        ease: 'power3.out',
+        clearProps: 'opacity,transform'
+      });
+
+      // Benefit cards reveal right as the image appears so they are immediately visible
+      if (cards.length > 0) {
+        stageTl.from(cards, {
+          opacity: 0,
+          y: 20,
+          stagger: 0.08,
+          duration: 0.7,
+          ease: 'power3.out',
+          clearProps: 'opacity,transform'
+        }, '-=0.5');
+      }
+    }
+  });
+
+  // Fallback for any legacy .deep-dive-row if present
   document.querySelectorAll('.deep-dive-row').forEach(row => {
     gsap.from(row, {
       scrollTrigger: {
@@ -118,20 +186,40 @@ export function initAnimations(): void {
       clearProps: 'opacity,transform'
     });
 
-    // Stagger the 3 architecture tiers inside the terminal
-    gsap.from('.arch-tier-item', {
-      scrollTrigger: {
-        trigger: '.arch-terminal-window',
-        start: 'top 85%',
-        once: true
-      },
-      opacity: 0,
-      x: 20,
-      stagger: 0.15,
-      duration: 0.6,
-      ease: 'power2.out',
-      clearProps: 'opacity,transform'
-    });
+    // Sequential animation for architecture tier cards and connecting lines
+    const tierCards = document.querySelectorAll('.arch-tier-item');
+    const connectorLines = document.querySelectorAll('.arch-connector .connector-line');
+
+    if (tierCards.length > 0) {
+      const archTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.arch-terminal-window',
+          start: 'top 85%',
+          once: true
+        }
+      });
+
+      tierCards.forEach((card, index) => {
+        archTl.from(card, {
+          opacity: 0,
+          x: 20,
+          duration: 0.45,
+          ease: 'power2.out',
+          clearProps: 'opacity,transform'
+        }, index === 0 ? undefined : '-=0.1');
+
+        if (connectorLines[index]) {
+          archTl.from(connectorLines[index], {
+            scaleY: 0,
+            opacity: 0,
+            duration: 0.3,
+            ease: 'power2.out',
+            transformOrigin: 'top center',
+            clearProps: 'opacity,transform'
+          }, '-=0.1');
+        }
+      });
+    }
   }
 
   // 7. Pricing Card Zoom In
