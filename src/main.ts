@@ -485,7 +485,8 @@ function initInteractions(): void {
 
       // Background webhook dispatch (Google Apps Script / n8n / custom webhook)
       const webhookUrl = (window as unknown as { QUICKPOS_WEBHOOK_URL?: string }).QUICKPOS_WEBHOOK_URL ||
-        import.meta.env.VITE_LEAD_WEBHOOK_URL || '';
+        import.meta.env.VITE_LEAD_WEBHOOK_URL ||
+        'https://script.google.com/macros/s/AKfycbws65OYdHDvA6iPtpcIC6lX8tYZmTFZxe3TFkCbz7ZZMw05kfy_yxodY6wLF816yn-_UQ/exec';
 
       if (webhookUrl) {
         try {
