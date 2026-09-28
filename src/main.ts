@@ -44,6 +44,33 @@ function renderApp(): void {
 
 // 2. Interactive Handlers Setup
 function initInteractions(): void {
+  // Sticky Navbar Scroll & Reading Progress Bar (0% at top, 100% at bottom)
+  const navbar = document.getElementById('navbar');
+  const scrollProgressBar = document.getElementById('header-scroll-progress');
+
+  const updateScrollProgress = () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+    if (navbar) {
+      if (scrollTop > 15) {
+        navbar.classList.add('is-scrolled');
+      } else {
+        navbar.classList.remove('is-scrolled');
+      }
+    }
+
+    if (scrollProgressBar) {
+      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      const clamped = Math.min(100, Math.max(0, scrollPercent));
+      scrollProgressBar.style.width = `${clamped}%`;
+    }
+  };
+
+  window.addEventListener('scroll', updateScrollProgress, { passive: true });
+  window.addEventListener('resize', updateScrollProgress, { passive: true });
+  updateScrollProgress();
+
   // Theme Toggle Button
   const themeToggle = document.getElementById('theme-toggle-btn');
   if (themeToggle) {
