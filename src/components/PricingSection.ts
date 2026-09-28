@@ -8,7 +8,7 @@ export function renderPricingSection(): string {
         <div class="section-header">
           <div class="section-tag">PRICING</div>
           <h2 class="section-title">
-            Start with a 30-Day Free Trial. Pay in Sri Lankan Rupees.
+            Start with a 30-Day Free Trial.<br class="pricing-title-br" />Pay in Sri Lankan Rupees.
           </h2>
           <p class="section-subtitle">
             No credit card required. Free store setup assistance included with every account.

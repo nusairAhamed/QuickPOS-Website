@@ -186,20 +186,40 @@ export function initAnimations(): void {
       clearProps: 'opacity,transform'
     });
 
-    // Stagger the 3 architecture tiers inside the terminal
-    gsap.from('.arch-tier-item', {
-      scrollTrigger: {
-        trigger: '.arch-terminal-window',
-        start: 'top 85%',
-        once: true
-      },
-      opacity: 0,
-      x: 20,
-      stagger: 0.15,
-      duration: 0.6,
-      ease: 'power2.out',
-      clearProps: 'opacity,transform'
-    });
+    // Sequential animation for architecture tier cards and connecting lines
+    const tierCards = document.querySelectorAll('.arch-tier-item');
+    const connectorLines = document.querySelectorAll('.arch-connector .connector-line');
+
+    if (tierCards.length > 0) {
+      const archTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.arch-terminal-window',
+          start: 'top 85%',
+          once: true
+        }
+      });
+
+      tierCards.forEach((card, index) => {
+        archTl.from(card, {
+          opacity: 0,
+          x: 20,
+          duration: 0.45,
+          ease: 'power2.out',
+          clearProps: 'opacity,transform'
+        }, index === 0 ? undefined : '-=0.1');
+
+        if (connectorLines[index]) {
+          archTl.from(connectorLines[index], {
+            scaleY: 0,
+            opacity: 0,
+            duration: 0.3,
+            ease: 'power2.out',
+            transformOrigin: 'top center',
+            clearProps: 'opacity,transform'
+          }, '-=0.1');
+        }
+      });
+    }
   }
 
   // 7. Pricing Card Zoom In
