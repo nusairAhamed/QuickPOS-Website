@@ -138,6 +138,13 @@
   transition: all 0.3s ease;
 }
 
+/* Ensure all target sections have breathing room below sticky header when navigated to */
+section[id],
+div[id],
+main > section {
+  scroll-margin-top: 5.5rem;
+}
+
 .site-nav {
   display: flex;
   align-items: center;
@@ -408,6 +415,7 @@
 .window-screen-img {
   width: 100%;
   height: auto;
+  aspect-ratio: 16 / 10;
   display: block;
   object-fit: cover;
 }
@@ -1350,7 +1358,7 @@
   height: auto;
   display: block;
   object-fit: contain;
-  aspect-ratio: 16/9;
+  aspect-ratio: 3 / 2;
   filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.6));
   position: relative;
   z-index: 1;
@@ -1997,8 +2005,11 @@
 /* ===================================================================
    Feature Deep Dives: 4 Alternating Rows (PDF Pages 2 & 3)
    =================================================================== */
+/* ===================================================================
+   Feature Deep Dives: 4 Alternating Rows (PDF Pages 2 & 3)
+   =================================================================== */
 .section-deep-dives {
-  padding: 5rem 0;
+  padding: 8.5rem 0 7rem;
 }
 
 .deep-dive-row {
@@ -2011,6 +2022,208 @@
 
 .deep-dive-row.deep-dive-reverse {
   grid-template-columns: 1.15fr 1fr;
+}
+
+/* 3D Visual Concept Stages for Features */
+.feature-3d-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.feature-3d-img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.35));
+}
+
+[data-theme="light"] .feature-3d-img {
+  filter: drop-shadow(0 16px 32px rgba(15, 23, 42, 0.12));
+}
+
+/* Deep Dive Hero Showcase (Massive Prominent 3D Centerpiece) */
+.deep-dive-showcase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10.5rem;
+  width: 100%;
+}
+
+.deep-dive-showcase:last-child {
+  margin-bottom: 0;
+}
+
+.deep-dive-showcase-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 3rem;
+}
+
+.deep-dive-showcase-header .section-tag {
+  margin-bottom: 0.85rem;
+  display: inline-block;
+}
+
+.deep-dive-showcase-header .section-title {
+  margin-bottom: 1rem;
+}
+
+.deep-dive-showcase-header .section-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Side-by-side split header */
+.deep-dive-showcase-header.showcase-header-split {
+  display: grid;
+  grid-template-columns: 1.18fr 1fr;
+  gap: 3.5rem;
+  align-items: flex-end;
+  text-align: left;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto 4.25rem;
+}
+
+.showcase-header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.showcase-header-left .section-tag {
+  margin-bottom: 0.85rem;
+  align-self: flex-start;
+}
+
+.showcase-header-left .section-title {
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.showcase-header-right {
+  display: flex;
+  align-items: flex-end;
+}
+
+.showcase-header-right .section-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.15rem;
+  line-height: 1.65;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+@media (max-width: 900px) {
+  .deep-dive-showcase-header.showcase-header-split {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.feature-3d-stage-hero {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 4.5rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Subtle, soft ambient radial glow behind the 3D showcase visual */
+.feature-3d-stage-hero::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 70%;
+  background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.18) 0%, rgba(99, 102, 241, 0.06) 48%, transparent 72%);
+  filter: blur(54px);
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 50%;
+}
+
+[data-theme="light"] .feature-3d-stage-hero::before {
+  background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.10) 0%, rgba(99, 102, 241, 0.03) 48%, transparent 70%);
+  filter: blur(44px);
+}
+
+.feature-3d-img-hero {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  max-height: 680px;
+  object-fit: contain;
+  filter: drop-shadow(0 28px 60px rgba(0, 0, 0, 0.45));
+}
+
+[data-theme="light"] .feature-3d-img-hero {
+  filter: drop-shadow(0 20px 45px rgba(15, 23, 42, 0.12));
+}
+
+.showcase-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.65rem;
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.showcase-feature-grid.showcase-feature-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.65rem;
+  max-width: 1100px;
+}
+
+.showcase-feature-grid .feature-check-pill {
+  height: 100%;
+}
+
+.showcase-feature-grid .feature-check-pill:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="light"] .showcase-feature-grid .feature-check-pill:hover {
+  box-shadow: 0 12px 24px -8px rgba(15, 23, 42, 0.08);
+}
+
+@media (max-width: 900px) {
+  .showcase-feature-grid.showcase-feature-grid-3 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-deep-dives {
+    padding: 5rem 0 4rem;
+  }
+  .showcase-feature-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .feature-3d-stage-hero {
+    margin-bottom: 2.75rem;
+  }
+  .deep-dive-showcase {
+    margin-bottom: 6rem;
+  }
 }
 
 .deep-dive-text {
@@ -2182,6 +2395,7 @@
 .stage-screen-img {
   width: 100%;
   height: auto;
+  aspect-ratio: 16 / 10;
   display: block;
   transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
@@ -2339,7 +2553,8 @@
     gap: 2.5rem !important;
     margin-bottom: 4.5rem !important;
   }
-  .deep-dive-row.deep-dive-reverse .mockup-window-frame {
+  .deep-dive-row.deep-dive-reverse .mockup-window-frame,
+  .deep-dive-row.deep-dive-reverse .feature-3d-stage {
     order: 2;
   }
   .deep-dive-row.deep-dive-reverse .deep-dive-text {

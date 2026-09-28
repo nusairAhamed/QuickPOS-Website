@@ -25,3 +25,6 @@ dist-ssr
 
 # Agent and planning outputs
 _bmad-output/
+_bmad/
+.agents/
+.claude/

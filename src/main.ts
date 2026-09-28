@@ -3,6 +3,7 @@ import './styles/components.css';
 
 import { initTheme, toggleTheme } from './theme';
 import { initAnimations } from './animations';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { renderNavbar } from './components/Navbar';
 import { renderHero } from './components/Hero';
@@ -58,13 +59,37 @@ function initInteractions(): void {
       const isVisible = mobileDrawer.style.display === 'block';
       mobileDrawer.style.display = isVisible ? 'none' : 'block';
     });
-
-    document.querySelectorAll('.mobile-nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileDrawer.style.display = 'none';
-      });
-    });
   }
+
+  // Smooth Scroll & Anchor Jump for Navigation Links (Desktop & Mobile)
+  const navAnchorLinks = document.querySelectorAll<HTMLAnchorElement>('.nav-link, .mobile-nav-link, a[href^="#"]');
+  navAnchorLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#') || href === '#') return;
+
+      const targetEl = document.querySelector(href);
+      if (targetEl) {
+        e.preventDefault();
+
+        // Close mobile drawer if open
+        if (mobileDrawer && mobileDrawer.style.display === 'block') {
+          mobileDrawer.style.display = 'none';
+        }
+
+        // Native smooth scroll into view respecting CSS scroll-margin-top
+        targetEl.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+
+        // Update URL hash cleanly without causing a jump
+        if (window.location.hash !== href) {
+          history.pushState(null, '', href);
+        }
+      }
+    });
+  });
 
   // Interactive Command Stage Tabs & Multi-Image Slider with Autoplay & Progress Bar
   let currentStageKey = 'stage-pos';
@@ -451,8 +476,6 @@ function initInteractions(): void {
   }
 }
 
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
 // 4. Initialize Everything on DOM Ready
 function main(): void {
   renderApp();
@@ -473,9 +496,6 @@ function main(): void {
     ScrollTrigger.refresh();
   });
 
-  window.addEventListener('hashchange', () => {
-    setTimeout(() => ScrollTrigger.refresh(), 50);
-  });
 
   setTimeout(() => ScrollTrigger.refresh(), 300);
   setTimeout(() => ScrollTrigger.refresh(), 1000);
