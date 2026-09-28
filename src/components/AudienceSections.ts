@@ -18,7 +18,7 @@ export function renderAudienceSections(): string {
           <!-- Card 1: Supermarkets & Grocery Stores -->
           <div class="stat-card" style="text-align: left; display: flex; flex-direction: column;">
             <div style="border-radius: 0.85rem; overflow: hidden; margin-bottom: 1.5rem; height: 180px;">
-              <img src="/assets/supermarket-store.jpg" alt="Supermarket and grocery retail checkout" style="width: 100%; height: 100%; object-fit: cover;" />
+              <img src="/assets/supermarket-store.jpg" alt="Supermarket and grocery retail checkout" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
             <div class="badge badge-pill" style="align-self: flex-start; margin-bottom: 0.75rem;">
               Supermarkets & Groceries

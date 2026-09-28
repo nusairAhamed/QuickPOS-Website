@@ -18,7 +18,8 @@ export function initAnimations(): void {
     .from('.hero-cta-group', { opacity: 0, y: 20, clearProps: 'opacity,transform' }, '-=0.6')
     .from('.hero-trust-bar', { opacity: 0, y: 15, clearProps: 'opacity,transform' }, '-=0.6')
     .from('.mockup-window-frame', { opacity: 0, y: 45, scale: 0.96, clearProps: 'opacity,transform' }, '-=0.5')
-    .from('.floating-chip', { opacity: 0, scale: 0.8, stagger: 0.18, clearProps: 'opacity,transform' }, '-=0.4');
+    .from('.floating-chip', { opacity: 0, scale: 0.8, stagger: 0.18, clearProps: 'opacity,transform' }, '-=0.4')
+    .from('.hero-verticals-pills .badge-pill', { opacity: 0, y: 15, stagger: 0.06, duration: 0.5, ease: 'power2.out', clearProps: 'opacity,transform' }, '-=0.2');
 
   // Parallax subtle float on Hero Mockup on scroll
   if (document.querySelector('.hero-mockup-container')) {

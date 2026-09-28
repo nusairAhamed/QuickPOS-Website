@@ -10,6 +10,8 @@ export function renderHardwareEcosystem(): string {
             <img 
               src="/assets/pos-hardware.jpg" 
               alt="QuickPOS Retail Counter Hardware Setup with Terminal, Thermal Printer, Barcode Scanner and Drawer" 
+              loading="lazy"
+              decoding="async"
               style="width: 100%; height: auto; display: block;" 
             />
           </div>

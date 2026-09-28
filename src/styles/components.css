@@ -351,6 +351,44 @@ main > section {
   perspective: 1200px;
 }
 
+.hero-verticals-pills {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.65rem 0.75rem;
+  margin-top: 4.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 10;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-verticals-pills .badge-pill {
+  padding: 0.42rem 0.95rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 9999px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.hero-verticals-pills .badge-pill:hover {
+  transform: translateY(-2px);
+  color: var(--text-primary);
+  border-color: var(--brand-primary);
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.2);
+}
+
 .mockup-window-frame {
   position: relative;
   background: var(--bg-surface);
@@ -436,6 +474,8 @@ main > section {
   -webkit-backdrop-filter: blur(12px);
   animation: floatChip 6s ease-in-out infinite;
   pointer-events: auto;
+  width: max-content;
+  max-width: calc(100% - 2rem);
 }
 
 .floating-chip-left {
@@ -451,8 +491,9 @@ main > section {
 }
 
 .floating-chip-bottom {
-  bottom: 8%;
-  left: 8%;
+  bottom: 10%;
+  left: 3%;
+  right: auto;
   animation-delay: -1.5s;
 }
 

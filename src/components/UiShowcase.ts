@@ -61,7 +61,7 @@ export function renderUiShowcase(): string {
           <div class="showcase-display-box">
             <div class="showcase-split-grid">
               <div class="showcase-image-holder">
-                <img src="/assets/pos-register.png" alt="QuickPOS V3 Cashier Register Screen" />
+                <img src="/assets/pos-register.png" alt="QuickPOS V3 Cashier Register Screen" loading="lazy" decoding="async" />
               </div>
               <div class="showcase-details-col">
                 <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-primary);">
@@ -101,7 +101,7 @@ export function renderUiShowcase(): string {
           <div class="showcase-display-box">
             <div class="showcase-split-grid">
               <div class="showcase-image-holder">
-                <img src="/assets/credit-aging.png" alt="Customer Credit Khata Ledger and Aging Report" />
+                <img src="/assets/credit-aging.png" alt="Customer Credit Khata Ledger and Aging Report" loading="lazy" decoding="async" />
               </div>
               <div class="showcase-details-col">
                 <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-primary);">
@@ -141,7 +141,7 @@ export function renderUiShowcase(): string {
           <div class="showcase-display-box">
             <div class="showcase-split-grid">
               <div class="showcase-image-holder">
-                <img src="/assets/profit-loss.png" alt="Real-time Profit and Loss Statement and Financials" />
+                <img src="/assets/profit-loss.png" alt="Real-time Profit and Loss Statement and Financials" loading="lazy" decoding="async" />
               </div>
               <div class="showcase-details-col">
                 <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-primary);">
@@ -181,7 +181,7 @@ export function renderUiShowcase(): string {
           <div class="showcase-display-box">
             <div class="showcase-split-grid">
               <div class="showcase-image-holder">
-                <img src="/assets/dashboard-overview.png" alt="Central Dashboard and Multi-Bank Treasury Management" />
+                <img src="/assets/dashboard-overview.png" alt="Central Dashboard and Multi-Bank Treasury Management" loading="lazy" decoding="async" />
               </div>
               <div class="showcase-details-col">
                 <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-primary);">
@@ -221,7 +221,7 @@ export function renderUiShowcase(): string {
           <div class="showcase-display-box">
             <div class="showcase-split-grid">
               <div class="showcase-image-holder">
-                <img src="/assets/sale-receipt.png" alt="Thermal Receipt Printing and Cash Drawer Automation" />
+                <img src="/assets/sale-receipt.png" alt="Thermal Receipt Printing and Cash Drawer Automation" loading="lazy" decoding="async" />
               </div>
               <div class="showcase-details-col">
                 <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-primary);">

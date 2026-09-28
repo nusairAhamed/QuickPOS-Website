@@ -33,6 +33,7 @@ export function renderFeatureDeepDives(): string {
               width="1859"
               height="846"
               loading="lazy"
+              decoding="async"
             />
           </div>
 
@@ -96,6 +97,7 @@ export function renderFeatureDeepDives(): string {
               width="1663"
               height="946"
               loading="lazy"
+              decoding="async"
             />
           </div>
 
@@ -159,6 +161,7 @@ export function renderFeatureDeepDives(): string {
               width="1663"
               height="945"
               loading="lazy"
+              decoding="async"
             />
           </div>
 
@@ -232,6 +235,7 @@ export function renderFeatureDeepDives(): string {
               width="1665"
               height="945"
               loading="lazy"
+              decoding="async"
             />
           </div>
 

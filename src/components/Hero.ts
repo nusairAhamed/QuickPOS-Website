@@ -82,8 +82,8 @@ export function renderHero(): string {
             </div>
           </div>
 
-          <!-- Floating Badge Bottom Right: Customer Credit Limit warning -->
-          <div class="floating-chip floating-chip-bottom" style="bottom: 12%; right: 2%;">
+          <!-- Floating Badge Bottom: Customer Credit Limit warning -->
+          <div class="floating-chip floating-chip-bottom" style="bottom: 12%; left: 3%; right: auto; width: max-content;">
             <div class="chip-icon" style="background: rgba(16, 185, 129, 0.12); color: #10B981;">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
             </div>
@@ -116,7 +116,8 @@ export function renderHero(): string {
               src="/assets/02_dashboard.png" 
               alt="QuickPOS Live Production Dashboard Overview" 
               class="window-screen-img"
-              loading="eager"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>

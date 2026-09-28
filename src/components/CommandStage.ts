@@ -246,6 +246,8 @@ export function renderCommandStage(): string {
               src="${initialSlide.img}" 
               alt="${initialSlide.title}" 
               class="window-screen-img stage-screen-img"
+              loading="lazy"
+              decoding="async"
               style="width: 100%; height: auto; display: block; transition: opacity 0.25s ease, transform 0.25s ease;" 
             />
 

@@ -23,6 +23,7 @@ export function renderHardwareSection(): string {
               alt="QuickPOS Complete Retail Counter Hardware Ecosystem" 
               class="hardware-stage-img"
               loading="lazy"
+              decoding="async"
             />
 
             <!-- Ambient Glow Overlay -->
