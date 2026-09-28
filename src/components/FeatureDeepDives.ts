@@ -197,9 +197,9 @@ export function renderFeatureDeepDives(): string {
             <div class="feature-check-pill">
               <div class="feature-check-icon">✓</div>
               <div>
-                <strong class="check-pill-title">Send Payment Reminders Through WhatsApp</strong>
+                <strong class="check-pill-title">Send Payment Reminders</strong>
                 <p class="check-pill-desc">
-                  Send polite, itemized statements and balance reminders to customer phones in one tap.
+                  Send polite, itemized statements and balance reminders via WhatsApp or SMS.
                 </p>
               </div>
             </div>
