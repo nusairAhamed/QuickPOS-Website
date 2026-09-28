@@ -36,21 +36,9 @@ export function renderTrialModal(): string {
             </div>
           </div>
 
-          <div class="modal-form-row">
-            <div class="modal-form-group">
-              <label class="modal-label" for="trial-phone">WhatsApp / Mobile No</label>
-              <input type="tel" id="trial-phone" class="modal-input" placeholder="+94 77 123 4567" required />
-            </div>
-
-            <div class="modal-form-group">
-              <label class="modal-label" for="trial-store-type">Primary Business Type</label>
-              <select id="trial-store-type" class="modal-input">
-                <option value="supermarket">Supermarket / Grocery</option>
-                <option value="pharmacy">Pharmacy / Chemist</option>
-                <option value="wholesale">Wholesale & Bulk Trade</option>
-                <option value="multi-branch">Multi-Branch Retail Chain</option>
-              </select>
-            </div>
+          <div class="modal-form-group">
+            <label class="modal-label" for="trial-phone">WhatsApp / Mobile Number</label>
+            <input type="tel" id="trial-phone" class="modal-input" placeholder="+94 77 123 4567" required />
           </div>
 
           <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 0.5rem;" id="trial-submit-btn">

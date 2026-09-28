@@ -1335,6 +1335,15 @@ main > section {
   background: var(--bg-surface);
 }
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Hardware Agnostic Section */
 .section-hardware-agnostic {
   padding: 5.5rem 0;

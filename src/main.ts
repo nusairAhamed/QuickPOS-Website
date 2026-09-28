@@ -460,8 +460,50 @@ function initInteractions(): void {
   }
 
   if (modalForm && trialSuccessMsg) {
-    modalForm.addEventListener('submit', (e) => {
+    const submitBtn = document.getElementById('trial-submit-btn') as HTMLButtonElement | null;
+
+    modalForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      const storeName = (document.getElementById('trial-store-name') as HTMLInputElement)?.value.trim() || '';
+      const subdomain = (document.getElementById('trial-subdomain') as HTMLInputElement)?.value.trim() || '';
+      const phone = (document.getElementById('trial-phone') as HTMLInputElement)?.value.trim() || '';
+
+      // Button loading state
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `
+          <span style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation: spin 0.8s linear infinite;">
+              <circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle>
+              <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"></path>
+            </svg>
+            Provisioning Vault...
+          </span>
+        `;
+      }
+
+      // Background webhook dispatch (Google Apps Script / n8n / custom webhook)
+      const webhookUrl = (window as unknown as { QUICKPOS_WEBHOOK_URL?: string }).QUICKPOS_WEBHOOK_URL ||
+        import.meta.env.VITE_LEAD_WEBHOOK_URL || '';
+
+      if (webhookUrl) {
+        try {
+          await fetch(webhookUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              storeName,
+              subdomain,
+              phone,
+              timestamp: new Date().toISOString()
+            })
+          });
+        } catch (err) {
+          console.error('Lead webhook dispatch error:', err);
+        }
+      }
 
       // Launch celebratory confetti
       confetti({
