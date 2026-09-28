@@ -17,16 +17,14 @@ export function renderHardwareSection(): string {
         <div class="hardware-hotspot-stage-wrapper">
           <div class="hardware-hotspot-stage" id="hardware-stage">
             
-            <!-- Main 3D Isolated Hardware Setup Image with Skeleton Holder -->
-            <div class="hardware-stage-holder skeleton-loading">
-              <img 
-                src="/assets/pos2.png" 
-                alt="QuickPOS Complete Retail Counter Hardware Ecosystem" 
-                class="hardware-stage-img skeleton-img"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
+            <!-- Main 3D Isolated Hardware Setup Image -->
+            <img 
+              src="/assets/pos2.png" 
+              alt="QuickPOS Complete Retail Counter Hardware Ecosystem" 
+              class="hardware-stage-img"
+              loading="lazy"
+              decoding="async"
+            />
 
             <!-- Ambient Glow Overlay -->
             <div class="hardware-stage-glow"></div>
