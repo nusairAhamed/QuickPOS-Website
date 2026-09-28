@@ -111,14 +111,16 @@ export function renderHero(): string {
               </div>
             </div>
 
-            <!-- Screenshot from screenshot folder -->
-            <img 
-              src="/assets/02_dashboard.png" 
-              alt="QuickPOS Live Production Dashboard Overview" 
-              class="window-screen-img"
-              loading="lazy"
-              decoding="async"
-            />
+            <!-- Screenshot from screenshot folder with Skeleton Holder -->
+            <div class="mockup-screen-container skeleton-loading">
+              <img 
+                src="/assets/02_dashboard.png" 
+                alt="QuickPOS Live Production Dashboard Overview" 
+                class="window-screen-img skeleton-img"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </div>
         </div>
 

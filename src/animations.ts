@@ -3,13 +3,20 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function initAnimations(): void {
+export function initAnimations(options?: { delayHero?: boolean }): { playHero: () => void } {
   // Check user preference for reduced motion
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReducedMotion) return;
+  if (prefersReducedMotion) {
+    return { playHero: () => {} };
+  }
+
+  const delayHero = options?.delayHero ?? false;
 
   // 1. Hero Reveal Timeline
-  const heroTl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.85 } });
+  const heroTl = gsap.timeline({ 
+    paused: delayHero,
+    defaults: { ease: 'power3.out', duration: 0.85 } 
+  });
 
   heroTl
     .from('.hero-pill-wrapper', { opacity: 0, y: -20, delay: 0.1, clearProps: 'opacity,transform' })
@@ -255,4 +262,10 @@ export function initAnimations(): void {
       clearProps: 'opacity,transform'
     });
   }
+
+  return {
+    playHero: () => {
+      heroTl.play();
+    }
+  };
 }

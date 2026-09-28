@@ -3,6 +3,7 @@ import './styles/components.css';
 
 import { initTheme, toggleTheme } from './theme';
 import { initAnimations } from './animations';
+import { initPageLoader } from './loader';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { renderNavbar } from './components/Navbar';
@@ -236,9 +237,9 @@ function initInteractions(): void {
       stageCounterText.innerText = `Screen ${currentSlideIndex + 1} of ${tab.slides.length}`;
     }
 
-    // 5. Update Image with directional slide transition
+    // 5. Update Image with directional slide transition & skeleton handling
     if (stageImg) {
-      stageImg.className = 'window-screen-img stage-screen-img';
+      stageImg.className = 'window-screen-img stage-screen-img skeleton-img';
       if (direction === 'next') {
         stageImg.classList.add('slide-from-right');
       } else if (direction === 'prev') {
@@ -247,6 +248,7 @@ function initInteractions(): void {
         stageImg.classList.add('slide-fade');
       }
 
+      const stageViewport = document.getElementById('stage-slider-viewport');
       const newImg = new Image();
       newImg.src = currentSlide.img;
 
@@ -257,17 +259,28 @@ function initInteractions(): void {
         stageImg.src = currentSlide.img;
         stageImg.alt = currentSlide.title;
 
+        if (stageViewport) {
+          stageViewport.classList.remove('skeleton-loading');
+        }
+
         // Smoothly animate in
         requestAnimationFrame(() => {
-          stageImg.className = 'window-screen-img stage-screen-img slide-active';
+          stageImg.className = 'window-screen-img stage-screen-img slide-active skeleton-img img-loaded';
         });
       };
 
-      if (newImg.complete) {
+      if (newImg.complete && newImg.naturalWidth > 0) {
         setTimeout(applyLoadedImage, 30);
       } else {
+        if (stageViewport) {
+          stageViewport.classList.add('skeleton-loading');
+        }
         newImg.onload = applyLoadedImage;
-        setTimeout(applyLoadedImage, 150);
+        newImg.onerror = () => {
+          if (stageViewport) stageViewport.classList.remove('skeleton-loading');
+          applyLoadedImage();
+        };
+        setTimeout(applyLoadedImage, 350);
       }
     }
 
@@ -422,6 +435,46 @@ function initInteractions(): void {
     });
   });
 
+  // Interactive UI Showcase Tabs (V3 POS, Khata, P&L, Treasury, Receipts)
+  const showcaseTabBtns = document.querySelectorAll('.tab-nav-btn[data-tab]');
+  const showcasePanels = document.querySelectorAll('.tab-content-panel');
+
+  showcaseTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetTabId = btn.getAttribute('data-tab');
+      if (!targetTabId) return;
+
+      showcaseTabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      showcasePanels.forEach(panel => {
+        const isTarget = panel.id === targetTabId;
+        panel.classList.toggle('active', isTarget);
+        if (isTarget) {
+          const img = panel.querySelector<HTMLImageElement>('img');
+          if (img) {
+            const container = img.closest('.skeleton-loading') || img.parentElement;
+            if (img.complete && img.naturalWidth > 0) {
+              img.classList.add('img-loaded');
+              container?.classList.remove('skeleton-loading');
+            } else {
+              img.classList.add('skeleton-img', 'img-loading');
+              container?.classList.add('skeleton-loading');
+              img.addEventListener('load', () => {
+                img.classList.add('img-loaded');
+                img.classList.remove('img-loading');
+                container?.classList.remove('skeleton-loading');
+                ScrollTrigger.refresh();
+              }, { once: true });
+            }
+          }
+        }
+      });
+
+      ScrollTrigger.refresh();
+    });
+  });
+
   // Initialize Stage UI
   updateStageUI();
 
@@ -519,26 +572,64 @@ function initInteractions(): void {
   }
 }
 
-// 4. Initialize Everything on DOM Ready
+// 4. Initialize Skeleton Loading for All Images & Dynamic Sections
+function initSkeletonLoading(): void {
+  const images = document.querySelectorAll<HTMLImageElement>('img');
+
+  images.forEach(img => {
+    // Determine closest skeleton container or parent
+    const skeletonContainer = img.closest('.skeleton-loading') || img.parentElement;
+
+    const markLoaded = () => {
+      img.classList.add('img-loaded');
+      img.classList.remove('img-loading');
+      if (skeletonContainer && skeletonContainer.classList.contains('skeleton-loading')) {
+        skeletonContainer.classList.remove('skeleton-loading');
+      }
+      ScrollTrigger.refresh();
+    };
+
+    // If image is already cached/complete with natural dimensions, mark loaded immediately
+    if (img.complete && img.naturalWidth > 0) {
+      markLoaded();
+    } else {
+      img.classList.add('skeleton-img', 'img-loading');
+      if (skeletonContainer && !skeletonContainer.classList.contains('skeleton-loading')) {
+        skeletonContainer.classList.add('skeleton-loading');
+      }
+
+      img.addEventListener('load', markLoaded, { once: true });
+      img.addEventListener('error', () => {
+        // Clear skeleton shimmer on error so it does not loop indefinitely
+        img.classList.remove('img-loading');
+        if (skeletonContainer) {
+          skeletonContainer.classList.remove('skeleton-loading');
+        }
+        ScrollTrigger.refresh();
+      }, { once: true });
+    }
+  });
+}
+
+// 5. Initialize Everything on DOM Ready
 function main(): void {
   renderApp();
   initTheme();
   initInteractions();
-  initAnimations();
 
-  // Refresh ScrollTrigger when images load to prevent stale trigger offsets
-  document.querySelectorAll('img').forEach(img => {
-    if (img.complete) {
-      ScrollTrigger.refresh();
-    } else {
-      img.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
+  // Coordinate initial page loader with hero entrance animation
+  const { playHero } = initAnimations({ delayHero: true });
+  initPageLoader({
+    onStartHero: () => {
+      playHero();
     }
   });
+
+  initSkeletonLoading();
 
   window.addEventListener('load', () => {
     ScrollTrigger.refresh();
   });
-
 
   setTimeout(() => ScrollTrigger.refresh(), 300);
   setTimeout(() => ScrollTrigger.refresh(), 1000);

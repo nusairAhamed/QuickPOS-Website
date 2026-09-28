@@ -60,8 +60,8 @@ export function renderUiShowcase(): string {
         <div class="tab-content-panel active" id="tab-pos">
           <div class="showcase-display-box">
             <div class="showcase-split-grid">
-              <div class="showcase-image-holder">
-                <img src="/assets/pos-register.png" alt="QuickPOS V3 Cashier Register Screen" loading="lazy" decoding="async" />
+              <div class="showcase-image-holder skeleton-loading">
+                <img src="/assets/pos-register.png" alt="QuickPOS V3 Cashier Register Screen" class="skeleton-img" loading="lazy" decoding="async" />
               </div>
               <div class="showcase-details-col">
                 <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-primary);">
@@ -100,8 +100,8 @@ export function renderUiShowcase(): string {
         <div class="tab-content-panel" id="tab-khata">
           <div class="showcase-display-box">
             <div class="showcase-split-grid">
-              <div class="showcase-image-holder">
-                <img src="/assets/credit-aging.png" alt="Customer Credit Khata Ledger and Aging Report" loading="lazy" decoding="async" />
+              <div class="showcase-image-holder skeleton-loading">
+                <img src="/assets/credit-aging.png" alt="Customer Credit Khata Ledger and Aging Report" class="skeleton-img" loading="lazy" decoding="async" />
               </div>
               <div class="showcase-details-col">
                 <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-primary);">
@@ -140,8 +140,8 @@ export function renderUiShowcase(): string {
         <div class="tab-content-panel" id="tab-pnl">
           <div class="showcase-display-box">
             <div class="showcase-split-grid">
-              <div class="showcase-image-holder">
-                <img src="/assets/profit-loss.png" alt="Real-time Profit and Loss Statement and Financials" loading="lazy" decoding="async" />
+              <div class="showcase-image-holder skeleton-loading">
+                <img src="/assets/profit-loss.png" alt="Real-time Profit and Loss Statement and Financials" class="skeleton-img" loading="lazy" decoding="async" />
               </div>
               <div class="showcase-details-col">
                 <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-primary);">
@@ -180,8 +180,8 @@ export function renderUiShowcase(): string {
         <div class="tab-content-panel" id="tab-overview">
           <div class="showcase-display-box">
             <div class="showcase-split-grid">
-              <div class="showcase-image-holder">
-                <img src="/assets/dashboard-overview.png" alt="Central Dashboard and Multi-Bank Treasury Management" loading="lazy" decoding="async" />
+              <div class="showcase-image-holder skeleton-loading">
+                <img src="/assets/dashboard-overview.png" alt="Central Dashboard and Multi-Bank Treasury Management" class="skeleton-img" loading="lazy" decoding="async" />
               </div>
               <div class="showcase-details-col">
                 <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-primary);">
@@ -220,8 +220,8 @@ export function renderUiShowcase(): string {
         <div class="tab-content-panel" id="tab-receipt">
           <div class="showcase-display-box">
             <div class="showcase-split-grid">
-              <div class="showcase-image-holder">
-                <img src="/assets/sale-receipt.png" alt="Thermal Receipt Printing and Cash Drawer Automation" loading="lazy" decoding="async" />
+              <div class="showcase-image-holder skeleton-loading">
+                <img src="/assets/sale-receipt.png" alt="Thermal Receipt Printing and Cash Drawer Automation" class="skeleton-img" loading="lazy" decoding="async" />
               </div>
               <div class="showcase-details-col">
                 <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-primary);">

@@ -26,15 +26,17 @@ export function renderFeatureDeepDives(): string {
 
           <!-- Massive Prominent 3D Visual Centerpiece -->
           <div class="feature-3d-stage feature-3d-stage-hero">
-            <img 
-              src="/assets/feature-pos-3d.png" 
-              alt="QuickPOS High-Velocity Counter Register with Barcode Scanning and Thermal Printing" 
-              class="feature-3d-img feature-3d-img-hero"
-              width="1859"
-              height="846"
-              loading="lazy"
-              decoding="async"
-            />
+            <div class="feature-3d-holder skeleton-loading">
+              <img 
+                src="/assets/feature-pos-3d.png" 
+                alt="QuickPOS High-Velocity Counter Register with Barcode Scanning and Thermal Printing" 
+                class="feature-3d-img feature-3d-img-hero skeleton-img"
+                width="1859"
+                height="846"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </div>
 
           <!-- 3 Benefit Cards in a Balanced 3-Column Grid -->
@@ -90,15 +92,17 @@ export function renderFeatureDeepDives(): string {
 
           <!-- Massive Prominent 3D Visual Centerpiece -->
           <div class="feature-3d-stage feature-3d-stage-hero">
-            <img 
-              src="/assets/feature-inventory-3d.png" 
-              alt="QuickPOS Real-Time Inventory Control with Excel Import and Low Stock Alerts" 
-              class="feature-3d-img feature-3d-img-hero"
-              width="1663"
-              height="946"
-              loading="lazy"
-              decoding="async"
-            />
+            <div class="feature-3d-holder skeleton-loading">
+              <img 
+                src="/assets/feature-inventory-3d.png" 
+                alt="QuickPOS Real-Time Inventory Control with Excel Import and Low Stock Alerts" 
+                class="feature-3d-img feature-3d-img-hero skeleton-img"
+                width="1663"
+                height="946"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </div>
 
           <!-- 3 Benefit Cards in a Balanced 3-Column Grid -->
@@ -154,15 +158,17 @@ export function renderFeatureDeepDives(): string {
 
           <!-- Massive Prominent 3D Visual Centerpiece -->
           <div class="feature-3d-stage feature-3d-stage-hero">
-            <img 
-              src="/assets/feature-credit-3d.png" 
-              alt="QuickPOS Customer 360 Credit Khata Ledger with Automated WhatsApp Reminders" 
-              class="feature-3d-img feature-3d-img-hero"
-              width="1663"
-              height="945"
-              loading="lazy"
-              decoding="async"
-            />
+            <div class="feature-3d-holder skeleton-loading">
+              <img 
+                src="/assets/feature-credit-3d.png" 
+                alt="QuickPOS Customer 360 Credit Khata Ledger with Automated WhatsApp Reminders" 
+                class="feature-3d-img feature-3d-img-hero skeleton-img"
+                width="1663"
+                height="945"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </div>
 
           <!-- 4 Benefit Cards in a Balanced 2x2 Grid -->
@@ -228,15 +234,17 @@ export function renderFeatureDeepDives(): string {
 
           <!-- Massive Prominent 3D Visual Centerpiece -->
           <div class="feature-3d-stage feature-3d-stage-hero">
-            <img 
-              src="/assets/feature-reports-3d.png" 
-              alt="QuickPOS Real-Time Executive Profit and Loss Statement with Financials" 
-              class="feature-3d-img feature-3d-img-hero"
-              width="1665"
-              height="945"
-              loading="lazy"
-              decoding="async"
-            />
+            <div class="feature-3d-holder skeleton-loading">
+              <img 
+                src="/assets/feature-reports-3d.png" 
+                alt="QuickPOS Real-Time Executive Profit and Loss Statement with Financials" 
+                class="feature-3d-img feature-3d-img-hero skeleton-img"
+                width="1665"
+                height="945"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </div>
 
           <!-- 4 Benefit Cards in a Balanced 2x2 Grid -->
