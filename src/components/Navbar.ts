@@ -65,6 +65,11 @@ export function renderNavbar(): string {
         </ul>
         <button class="btn btn-primary btn-sm open-trial-modal-btn" style="width: 100%;">Start Free Trial</button>
       </div>
+
+      <!-- Scroll Progress Bar directly below sticky menu -->
+      <div class="header-scroll-progress-container" aria-hidden="true">
+        <div class="header-scroll-progress-bar" id="header-scroll-progress"></div>
+      </div>
     </header>
   `;
 }

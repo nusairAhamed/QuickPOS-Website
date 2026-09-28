@@ -5,11 +5,14 @@ export function renderHardwareEcosystem(): string {
     <section class="section-hardware" id="hardware">
       <div class="container">
         <div class="hardware-split">
-          <!-- Left: Hardware Image Visual -->
-          <div class="hardware-img-container">
+          <!-- Left: Hardware Image Visual with Skeleton Loader -->
+          <div class="hardware-img-container skeleton-loading">
             <img 
               src="/assets/pos-hardware.jpg" 
               alt="QuickPOS Retail Counter Hardware Setup with Terminal, Thermal Printer, Barcode Scanner and Drawer" 
+              class="skeleton-img"
+              loading="lazy"
+              decoding="async"
               style="width: 100%; height: auto; display: block;" 
             />
           </div>

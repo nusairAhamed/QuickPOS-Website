@@ -50,6 +50,11 @@
   --pos-card-bg: #FFFFFF;
   --pos-cart-bg: #FFFFFF;
   --pos-border: #E2E8F0;
+
+  /* Skeleton Loading Tokens (Light Mode) */
+  --skeleton-base: #E2E8F0;
+  --skeleton-highlight: rgba(255, 255, 255, 0.85);
+  --skeleton-shimmer-bg: linear-gradient(90deg, #E2E8F0 0%, #F1F5F9 50%, #E2E8F0 100%);
 }
 
 /* Dark Theme */
@@ -88,6 +93,11 @@
   --pos-card-bg: #111827;
   --pos-cart-bg: #111827;
   --pos-border: #1E293B;
+
+  /* Skeleton Loading Tokens (Dark Mode) */
+  --skeleton-base: #131C2E;
+  --skeleton-highlight: rgba(255, 255, 255, 0.08);
+  --skeleton-shimmer-bg: linear-gradient(90deg, #131C2E 0%, #1E293B 50%, #131C2E 100%);
 }
 
 /* Base resets & utilities */
@@ -114,6 +124,7 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;
+  padding-top: 4.5rem;
   overflow-x: clip;
   max-width: 100%;
   width: 100%;
@@ -121,7 +132,13 @@ body {
   transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-#app, main {
+#app {
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+}
+
+main {
   overflow-x: clip;
   width: 100%;
   max-width: 100%;

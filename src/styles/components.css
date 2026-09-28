@@ -127,15 +127,52 @@
 
 /* Navbar */
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 100;
+  left: 0;
+  right: 0;
   width: 100%;
+  z-index: 1000;
   background: var(--bg-glass);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-subtle);
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.site-header.is-scrolled {
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="dark"] .site-header.is-scrolled {
+  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.45);
+}
+
+/* Header Scroll Progress Bar (0% at top, 100% at bottom) */
+.header-scroll-progress-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1001;
+}
+
+[data-theme="dark"] .header-scroll-progress-container {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.header-scroll-progress-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #2563EB 0%, #6366F1 50%, #10B981 100%);
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.75), 0 0 4px #10B981;
+  transition: width 0.06s ease-out;
+  will-change: width;
 }
 
 /* Ensure all target sections have breathing room below sticky header when navigated to */
@@ -351,6 +388,44 @@ main > section {
   perspective: 1200px;
 }
 
+.hero-verticals-pills {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.65rem 0.75rem;
+  margin-top: 4.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 10;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-verticals-pills .badge-pill {
+  padding: 0.42rem 0.95rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 9999px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.hero-verticals-pills .badge-pill:hover {
+  transform: translateY(-2px);
+  color: var(--text-primary);
+  border-color: var(--brand-primary);
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.2);
+}
+
 .mockup-window-frame {
   position: relative;
   background: var(--bg-surface);
@@ -436,6 +511,8 @@ main > section {
   -webkit-backdrop-filter: blur(12px);
   animation: floatChip 6s ease-in-out infinite;
   pointer-events: auto;
+  width: max-content;
+  max-width: calc(100% - 2rem);
 }
 
 .floating-chip-left {
@@ -451,8 +528,9 @@ main > section {
 }
 
 .floating-chip-bottom {
-  bottom: 8%;
-  left: 8%;
+  bottom: 10%;
+  left: 3%;
+  right: auto;
   animation-delay: -1.5s;
 }
 
@@ -759,11 +837,19 @@ main > section {
   border: 1px solid var(--border-subtle);
   box-shadow: var(--shadow-md);
   position: relative;
+  background-color: var(--skeleton-base);
+  transition: background-color 0.3s ease;
+}
+
+.showcase-image-holder:not(.skeleton-loading) {
+  background-color: transparent;
 }
 
 .showcase-image-holder img {
   width: 100%;
   height: auto;
+  max-width: 100%;
+  object-fit: contain;
   display: block;
 }
 
@@ -1389,12 +1475,13 @@ main > section {
 .hardware-stage-img {
   width: 100%;
   height: auto;
+  max-width: 100%;
   display: block;
   object-fit: contain;
-  aspect-ratio: 3 / 2;
-  filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.55));
   position: relative;
   z-index: 1;
+  border-radius: 0;
 }
 
 .hardware-stage-glow {
@@ -3003,6 +3090,362 @@ main > section {
     border-radius: 1.25rem !important;
   }
 }
+
+/* ==========================================================================
+   SKELETON LOADING SYSTEM
+   Ultra-smooth GPU-accelerated placeholder shimmer for lazy images & cards
+   ========================================================================== */
+
+@keyframes skeletonWave {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes skeletonPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Skeleton shimmer container / wrapper */
+.skeleton-loading {
+  position: relative !important;
+  overflow: hidden !important;
+  background-color: var(--skeleton-base) !important;
+}
+
+.skeleton-loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--skeleton-highlight) 50%,
+    transparent 100%
+  );
+  animation: skeletonWave 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Universal Image Fade-In when loaded */
+img.skeleton-img {
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity;
+}
+
+img.img-loading {
+  opacity: 0 !important;
+}
+
+img.skeleton-img.img-loaded,
+img.img-loaded {
+  opacity: 1 !important;
+}
+
+/* Dedicated Image Holders with Aspect Ratio Reservations */
+.mockup-screen-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background-color: var(--skeleton-base);
+  transition: background-color 0.3s ease;
+}
+
+.mockup-screen-container:not(.skeleton-loading) {
+  background-color: transparent;
+}
+
+.feature-3d-holder {
+  position: relative;
+  overflow: visible;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent !important;
+  border-radius: 0 !important;
+}
+
+.feature-3d-holder:not(.skeleton-loading) {
+  background-color: transparent;
+}
+
+.hardware-stage-holder {
+  position: relative;
+  overflow: visible;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent !important;
+  border-radius: 0 !important;
+}
+
+.hardware-stage-holder:not(.skeleton-loading) {
+  background-color: transparent;
+}
+
+/* Reusable UI Skeleton Primitives */
+.skeleton-box {
+  display: block;
+  background-color: var(--skeleton-base);
+  border-radius: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-box::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--skeleton-highlight) 50%,
+    transparent 100%
+  );
+  animation: skeletonWave 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.skeleton-text {
+  height: 1rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.skeleton-text-sm {
+  height: 0.75rem;
+  border-radius: 4px;
+}
+
+.skeleton-text-lg {
+  height: 1.5rem;
+  border-radius: 6px;
+}
+
+/* ===================================================================
+   Initial Page Loader (Ultra-Sleek SaaS Boot Screen)
+   =================================================================== */
+.skip-loader #initial-loader {
+  display: none !important;
+}
+
+.skip-loader body.loader-active,
+html.skip-loader body {
+  overflow: auto !important;
+}
+
+body.loader-active {
+  overflow: hidden !important;
+}
+
+#initial-loader {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #080C14;
+  color: #F8FAFC;
+  overflow: hidden;
+  user-select: none;
+  pointer-events: all;
+  will-change: transform, opacity;
+}
+
+.loader-bg-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.28) 0%, rgba(99, 102, 241, 0.15) 35%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  animation: loaderPulse 3.5s ease-in-out infinite alternate;
+}
+
+.loader-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(8, 12, 20, 0.1), rgba(8, 12, 20, 0.9));
+  background-size: 28px 28px, 100% 100%;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+@keyframes loaderPulse {
+  0% { transform: scale(0.85); opacity: 0.5; }
+  100% { transform: scale(1.15); opacity: 0.95; }
+}
+
+.loader-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.loader-brand-box {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #2563EB 0%, #4F46E5 50%, #7C3AED 100%);
+  box-shadow: 0 16px 36px rgba(37, 99, 235, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+  margin-bottom: 1.5rem;
+  animation: loaderFloat 3s ease-in-out infinite alternate;
+}
+
+@keyframes loaderFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-4px); }
+}
+
+.loader-ring {
+  position: absolute;
+  inset: -7px;
+  border-radius: 28px;
+  border: 2px dashed rgba(99, 102, 241, 0.45);
+  animation: loaderSpin 12s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes loaderSpin {
+  100% { transform: rotate(360deg); }
+}
+
+.loader-logo-svg {
+  width: 34px;
+  height: 34px;
+  stroke: #FFFFFF;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.35));
+}
+
+.loader-title {
+  font-family: var(--font-sans);
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 1.75rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.loader-tag {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(37, 99, 235, 0.25);
+  border: 1px solid rgba(59, 130, 246, 0.45);
+  color: #93C5FD;
+  letter-spacing: 0.05em;
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.2);
+}
+
+.loader-progress-wrap {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.loader-progress-track {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 99px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.loader-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #2563EB 0%, #6366F1 50%, #10B981 100%);
+  border-radius: 99px;
+  box-shadow: 0 0 14px rgba(59, 130, 246, 0.9), 0 0 6px rgba(16, 185, 129, 0.8);
+  transition: width 0.1s ease-out;
+}
+
+.loader-meta {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #94A3B8;
+}
+
+.loader-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #64748B;
+  font-size: 0.72rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.loader-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 8px #10B981;
+  animation: loaderDotBlink 1.4s ease-in-out infinite;
+}
+
+@keyframes loaderDotBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.75); }
+}
+
+.loader-percent {
+  font-weight: 700;
+  color: #F8FAFC;
+  letter-spacing: 0.02em;
+}
+
+
 
 
 

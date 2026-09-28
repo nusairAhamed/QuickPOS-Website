@@ -3,13 +3,20 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function initAnimations(): void {
+export function initAnimations(options?: { delayHero?: boolean }): { playHero: () => void } {
   // Check user preference for reduced motion
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReducedMotion) return;
+  if (prefersReducedMotion) {
+    return { playHero: () => {} };
+  }
+
+  const delayHero = options?.delayHero ?? false;
 
   // 1. Hero Reveal Timeline
-  const heroTl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.85 } });
+  const heroTl = gsap.timeline({ 
+    paused: delayHero,
+    defaults: { ease: 'power3.out', duration: 0.85 } 
+  });
 
   heroTl
     .from('.hero-pill-wrapper', { opacity: 0, y: -20, delay: 0.1, clearProps: 'opacity,transform' })
@@ -18,7 +25,8 @@ export function initAnimations(): void {
     .from('.hero-cta-group', { opacity: 0, y: 20, clearProps: 'opacity,transform' }, '-=0.6')
     .from('.hero-trust-bar', { opacity: 0, y: 15, clearProps: 'opacity,transform' }, '-=0.6')
     .from('.mockup-window-frame', { opacity: 0, y: 45, scale: 0.96, clearProps: 'opacity,transform' }, '-=0.5')
-    .from('.floating-chip', { opacity: 0, scale: 0.8, stagger: 0.18, clearProps: 'opacity,transform' }, '-=0.4');
+    .from('.floating-chip', { opacity: 0, scale: 0.8, stagger: 0.18, clearProps: 'opacity,transform' }, '-=0.4')
+    .from('.hero-verticals-pills .badge-pill', { opacity: 0, y: 15, stagger: 0.06, duration: 0.5, ease: 'power2.out', clearProps: 'opacity,transform' }, '-=0.2');
 
   // Parallax subtle float on Hero Mockup on scroll
   if (document.querySelector('.hero-mockup-container')) {
@@ -254,4 +262,10 @@ export function initAnimations(): void {
       clearProps: 'opacity,transform'
     });
   }
+
+  return {
+    playHero: () => {
+      heroTl.play();
+    }
+  };
 }
