@@ -1,3 +1,5 @@
+import { t } from '../i18n';
+
 // Transformation Section: Paper & Guesswork vs Automated Control (from PDF Page 1 & 2)
 
 export function renderTransformation(): string {
@@ -6,12 +8,12 @@ export function renderTransformation(): string {
       <div class="container">
         <!-- Section Header -->
         <div class="section-header">
-          <div class="section-tag">THE PROBLEM</div>
-          <h2 class="section-title">
-            Still running your shop on notebooks and spreadsheets?
+          <div class="section-tag" data-i18n="transformation.tag">${t('transformation.tag')}</div>
+          <h2 class="section-title" data-i18n="transformation.title">
+            ${t('transformation.title')}
           </h2>
-          <p class="section-subtitle">
-            Manual credit records get lost. Cheques bounce without warning. Fragile desktop software crashes on a single PC. QuickPOS brings order to everyday retail.
+          <p class="section-subtitle" data-i18n="transformation.subtitle">
+            ${t('transformation.subtitle')}
           </p>
         </div>
 
@@ -20,25 +22,25 @@ export function renderTransformation(): string {
           <!-- Left: Paper & Guesswork -->
           <div class="trans-card trans-card-old">
             <div class="trans-card-header">
-              <h3 class="trans-card-title trans-title-old">Paper & Guesswork</h3>
-              <span class="badge badge-old-friction">THE OLD FRICTION</span>
+              <h3 class="trans-card-title trans-title-old" data-i18n="transformation.oldTitle">${t('transformation.oldTitle')}</h3>
+              <span class="badge badge-old-friction" data-i18n="transformation.oldBadge">${t('transformation.oldBadge')}</span>
             </div>
             <ul class="trans-card-list">
               <li class="trans-item-old">
                 <span class="trans-cross-icon">✕</span>
-                <span>Customer debts scribbled in notebooks; forgotten balances and lost collections.</span>
+                <span data-i18n="transformation.oldItem1">${t('transformation.oldItem1')}</span>
               </li>
               <li class="trans-item-old">
                 <span class="trans-cross-icon">✕</span>
-                <span>Post-dated cheques (PDCs) slipping past due dates, triggering heavy bank return penalties.</span>
+                <span data-i18n="transformation.oldItem2">${t('transformation.oldItem2')}</span>
               </li>
               <li class="trans-item-old">
                 <span class="trans-cross-icon">✕</span>
-                <span>Desktop software locked to one old computer with zero cloud backups.</span>
+                <span data-i18n="transformation.oldItem3">${t('transformation.oldItem3')}</span>
               </li>
               <li class="trans-item-old">
                 <span class="trans-cross-icon">✕</span>
-                <span>End-of-day register totals never matching the physical drawer cash count.</span>
+                <span data-i18n="transformation.oldItem4">${t('transformation.oldItem4')}</span>
               </li>
             </ul>
           </div>
@@ -54,25 +56,25 @@ export function renderTransformation(): string {
           <!-- Right: Automated Control -->
           <div class="trans-card trans-card-new">
             <div class="trans-card-header">
-              <h3 class="trans-card-title trans-title-new">Automated Control</h3>
-              <span class="badge badge-new-standard">THE QUICKPOS STANDARD</span>
+              <h3 class="trans-card-title trans-title-new" data-i18n="transformation.newTitle">${t('transformation.newTitle')}</h3>
+              <span class="badge badge-new-standard" data-i18n="transformation.newBadge">${t('transformation.newBadge')}</span>
             </div>
             <ul class="trans-card-list">
               <li class="trans-item-new">
                 <span class="trans-check-icon">✓</span>
-                <span>Digital Niyama Potha with strict credit limits and 1-click WhatsApp payment reminders.</span>
+                <span data-i18n="transformation.newItem1">${t('transformation.newItem1')}</span>
               </li>
               <li class="trans-item-new">
                 <span class="trans-check-icon">✓</span>
-                <span>Automated Cheque Register with 7-day maturity warnings and atomic bank balance sync.</span>
+                <span data-i18n="transformation.newItem2">${t('transformation.newItem2')}</span>
               </li>
               <li class="trans-item-new">
                 <span class="trans-check-icon">✓</span>
-                <span>Cloud SaaS with physical database-per-tenant isolation and nightly cold backups.</span>
+                <span data-i18n="transformation.newItem3">${t('transformation.newItem3')}</span>
               </li>
               <li class="trans-item-new">
                 <span class="trans-check-icon">✓</span>
-                <span>Enforced cashier shift float opening, blind closing counts, and instant P&L profit calculations.</span>
+                <span data-i18n="transformation.newItem4">${t('transformation.newItem4')}</span>
               </li>
             </ul>
           </div>

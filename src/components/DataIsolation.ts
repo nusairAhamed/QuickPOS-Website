@@ -1,3 +1,5 @@
+import { t } from '../i18n';
+
 // Complete Data Isolation Section (PDF Page 4) - Verbatim Copy & Enterprise Cloud Architecture Design
 
 export function renderDataIsolation(): string {
@@ -12,15 +14,15 @@ export function renderDataIsolation(): string {
           <div class="isolation-info-col">
             <div class="isolation-badge">
               <span class="isolation-badge-dot"></span>
-              <span>SECURITY & PRIVACY</span>
+              <span data-i18n="isolation.badge">${t('isolation.badge')}</span>
             </div>
 
-            <h2 class="isolation-heading">
-              Your business data <span class="isolation-heading-gradient">stays private.</span>
+            <h2 class="isolation-heading" data-i18n-html="isolation.heading">
+              ${t('isolation.heading')}
             </h2>
 
-            <p class="isolation-description">
-              Your sales, customers, stock and financial records are kept separate from other businesses and protected with automated backups.
+            <p class="isolation-description" data-i18n="isolation.description">
+              ${t('isolation.description')}
             </p>
 
             <div class="isolation-features-row">
@@ -31,8 +33,8 @@ export function renderDataIsolation(): string {
                   </svg>
                 </div>
                 <div>
-                  <div style="font-weight: 700; color: #F1F5F9; font-size: 0.95rem; margin-bottom: 0.2rem;">Your data stays separate</div>
-                  <div style="font-size: 0.85rem; color: #94A3B8; font-weight: 400; line-height: 1.4;">Your store's information isn't mixed with other businesses.</div>
+                  <div style="font-weight: 700; color: #F1F5F9; font-size: 0.95rem; margin-bottom: 0.2rem;" data-i18n="isolation.item1Title">${t('isolation.item1Title')}</div>
+                  <div style="font-size: 0.85rem; color: #94A3B8; font-weight: 400; line-height: 1.4;" data-i18n="isolation.item1Desc">${t('isolation.item1Desc')}</div>
                 </div>
               </div>
 
@@ -43,8 +45,8 @@ export function renderDataIsolation(): string {
                   </svg>
                 </div>
                 <div>
-                  <div style="font-weight: 700; color: #F1F5F9; font-size: 0.95rem; margin-bottom: 0.2rem;">Automatic backups</div>
-                  <div style="font-size: 0.85rem; color: #94A3B8; font-weight: 400; line-height: 1.4;">Your business data is backed up automatically.</div>
+                  <div style="font-weight: 700; color: #F1F5F9; font-size: 0.95rem; margin-bottom: 0.2rem;" data-i18n="isolation.item2Title">${t('isolation.item2Title')}</div>
+                  <div style="font-size: 0.85rem; color: #94A3B8; font-weight: 400; line-height: 1.4;" data-i18n="isolation.item2Desc">${t('isolation.item2Desc')}</div>
                 </div>
               </div>
 
@@ -55,8 +57,8 @@ export function renderDataIsolation(): string {
                   </svg>
                 </div>
                 <div>
-                  <div style="font-weight: 700; color: #F1F5F9; font-size: 0.95rem; margin-bottom: 0.2rem;">Controlled access</div>
-                  <div style="font-size: 0.85rem; color: #94A3B8; font-weight: 400; line-height: 1.4;">Give employees access only to the parts of QuickPOS they need.</div>
+                  <div style="font-weight: 700; color: #F1F5F9; font-size: 0.95rem; margin-bottom: 0.2rem;" data-i18n="isolation.item3Title">${t('isolation.item3Title')}</div>
+                  <div style="font-size: 0.85rem; color: #94A3B8; font-weight: 400; line-height: 1.4;" data-i18n="isolation.item3Desc">${t('isolation.item3Desc')}</div>
                 </div>
               </div>
             </div>
@@ -66,7 +68,7 @@ export function renderDataIsolation(): string {
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
               </svg>
-              <span>Built with isolated databases, encrypted connections and role-based access.</span>
+              <span data-i18n="isolation.credibility">${t('isolation.credibility')}</span>
             </div>
           </div>
 
