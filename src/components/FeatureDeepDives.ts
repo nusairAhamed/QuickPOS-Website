@@ -1,3 +1,5 @@
+import { t } from '../i18n';
+
 // Feature Deep Dives: 4 Alternating Feature Sections (Standardized Hero Showcases)
 
 export function renderFeatureDeepDives(): string {
@@ -12,14 +14,14 @@ export function renderFeatureDeepDives(): string {
           <!-- Top Section Header (Side-by-Side Heading & Copy) -->
           <div class="deep-dive-showcase-header showcase-header-split">
             <div class="showcase-header-left">
-              <div class="section-tag">01 / POS</div>
-              <h2 class="section-title text-left">
-                Sell faster. Keep the queue moving.
+              <div class="section-tag" data-i18n="features.pos.tag">${t('features.pos.tag')}</div>
+              <h2 class="section-title text-left" data-i18n="features.pos.title">
+                ${t('features.pos.title')}
               </h2>
             </div>
             <div class="showcase-header-right">
-              <p class="section-subtitle text-left">
-                Search products, scan barcodes, apply discounts and print receipts without slowing down the counter.
+              <p class="section-subtitle text-left" data-i18n="features.pos.subtitle">
+                ${t('features.pos.subtitle')}
               </p>
             </div>
           </div>
@@ -76,14 +78,14 @@ export function renderFeatureDeepDives(): string {
           <!-- Top Section Header (Side-by-Side Heading & Copy) -->
           <div class="deep-dive-showcase-header showcase-header-split">
             <div class="showcase-header-left">
-              <div class="section-tag">02 / INVENTORY</div>
-              <h2 class="section-title text-left">
-                Know exactly what you have.
+              <div class="section-tag" data-i18n="features.inventory.tag">${t('features.inventory.tag')}</div>
+              <h2 class="section-title text-left" data-i18n="features.inventory.title">
+                ${t('features.inventory.title')}
               </h2>
             </div>
             <div class="showcase-header-right">
-              <p class="section-subtitle text-left">
-                Track every product, variant and stock movement without relying on spreadsheets.
+              <p class="section-subtitle text-left" data-i18n="features.inventory.subtitle">
+                ${t('features.inventory.subtitle')}
               </p>
             </div>
           </div>
@@ -140,14 +142,14 @@ export function renderFeatureDeepDives(): string {
           <!-- Top Section Header (Side-by-Side Heading & Copy) -->
           <div class="deep-dive-showcase-header showcase-header-split">
             <div class="showcase-header-left">
-              <div class="section-tag">03 / CREDIT</div>
-              <h2 class="section-title text-left">
-                Replace your Niyama Potha with a digital credit ledger.
+              <div class="section-tag" data-i18n="features.credit.tag">${t('features.credit.tag')}</div>
+              <h2 class="section-title text-left" data-i18n="features.credit.title">
+                ${t('features.credit.title')}
               </h2>
             </div>
             <div class="showcase-header-right">
-              <p class="section-subtitle text-left">
-                Know who owes you, how much they owe and when it's due—without searching through notebooks.
+              <p class="section-subtitle text-left" data-i18n="features.credit.subtitle">
+                ${t('features.credit.subtitle')}
               </p>
             </div>
           </div>
@@ -214,14 +216,14 @@ export function renderFeatureDeepDives(): string {
           <!-- Top Section Header (Side-by-Side Heading & Copy) -->
           <div class="deep-dive-showcase-header showcase-header-split">
             <div class="showcase-header-left">
-              <div class="section-tag">04 / FINANCIALS</div>
-              <h2 class="section-title text-left">
-                Know if your shop is actually making money.
+              <div class="section-tag" data-i18n="features.financials.tag">${t('features.financials.tag')}</div>
+              <h2 class="section-title text-left" data-i18n="features.financials.title">
+                ${t('features.financials.title')}
               </h2>
             </div>
             <div class="showcase-header-right">
-              <p class="section-subtitle text-left">
-                See your sales, expenses, stock costs and profit in one place—without calculating everything manually.
+              <p class="section-subtitle text-left" data-i18n="features.financials.subtitle">
+                ${t('features.financials.subtitle')}
               </p>
             </div>
           </div>

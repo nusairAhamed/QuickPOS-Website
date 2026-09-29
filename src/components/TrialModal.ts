@@ -1,3 +1,5 @@
+import { t } from '../i18n';
+
 // Trial Modal & Onboarding Sandbox Popup
 
 export function renderTrialModal(): string {
@@ -13,23 +15,23 @@ export function renderTrialModal(): string {
         </button>
 
         <div style="margin-bottom: 1.5rem;">
-          <div class="badge badge-pill" style="margin-bottom: 0.5rem;">⚡ 30-Day Free Trial</div>
-          <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.35rem;">
-            Provision Your Store Vault
+          <div class="badge badge-pill" style="margin-bottom: 0.5rem;" data-i18n="modal.badge">${t('modal.badge')}</div>
+          <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.35rem;" data-i18n="modal.title">
+            ${t('modal.title')}
           </h3>
-          <p style="font-size: 0.875rem; color: var(--text-secondary);">
-            Get an isolated database instance and custom subdomain in under 5 minutes. No credit card required.
+          <p style="font-size: 0.875rem; color: var(--text-secondary);" data-i18n="modal.desc">
+            ${t('modal.desc')}
           </p>
         </div>
 
         <form id="trial-modal-form">
           <div class="modal-form-group">
-            <label class="modal-label" for="trial-store-name">Store or Business Name</label>
-            <input type="text" id="trial-store-name" class="modal-input" placeholder="e.g. City Supermarket & Groceries" required />
+            <label class="modal-label" for="trial-store-name" data-i18n="modal.storeNameLabel">${t('modal.storeNameLabel')}</label>
+            <input type="text" id="trial-store-name" class="modal-input" placeholder="${t('modal.storeNamePlaceholder')}" data-i18n-placeholder="modal.storeNamePlaceholder" required />
           </div>
 
           <div class="modal-form-group">
-            <label class="modal-label" for="trial-subdomain">Desired Dedicated Subdomain</label>
+            <label class="modal-label" for="trial-subdomain" data-i18n="modal.subdomainLabel">${t('modal.subdomainLabel')}</label>
             <div style="display: flex; align-items: center; gap: 0.5rem;">
               <input type="text" id="trial-subdomain" class="modal-input" placeholder="citysuper" style="flex: 1;" required />
               <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); font-family: var(--font-mono);">.quickpos.lk</span>
@@ -37,25 +39,25 @@ export function renderTrialModal(): string {
           </div>
 
           <div class="modal-form-group">
-            <label class="modal-label" for="trial-phone">WhatsApp / Mobile Number</label>
-            <input type="tel" id="trial-phone" class="modal-input" placeholder="+94 77 123 4567" required />
+            <label class="modal-label" for="trial-phone" data-i18n="modal.phoneLabel">${t('modal.phoneLabel')}</label>
+            <input type="tel" id="trial-phone" class="modal-input" placeholder="${t('modal.phonePlaceholder')}" data-i18n-placeholder="modal.phonePlaceholder" required />
           </div>
 
           <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 0.5rem;" id="trial-submit-btn">
-            <span>Provision My Dedicated Store →</span>
+            <span data-i18n="modal.submitBtn">${t('modal.submitBtn')}</span>
           </button>
         </form>
 
         <div id="trial-success-message" style="display: none; text-align: center; padding: 1.5rem 0;">
           <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">🎉</div>
-          <h4 style="font-size: 1.25rem; font-weight: 800; color: var(--brand-accent-green); margin-bottom: 0.5rem;">
-            Dedicated Database Vault Requested!
+          <h4 style="font-size: 1.25rem; font-weight: 800; color: var(--brand-accent-green); margin-bottom: 0.5rem;" data-i18n="modal.successTitle">
+            ${t('modal.successTitle')}
           </h4>
-          <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
-            Your store environment is being provisioned. Our onboarding specialist will reach out on WhatsApp within 15 minutes with your private credentials and guided catalog setup.
+          <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1.5rem;" data-i18n="modal.successDesc">
+            ${t('modal.successDesc')}
           </p>
           <button class="btn btn-primary btn-md" onclick="document.getElementById('trial-modal-backdrop').classList.remove('open')" style="width: 100%;">
-            Done
+            <span data-i18n="modal.doneBtn">${t('modal.doneBtn')}</span>
           </button>
         </div>
       </div>

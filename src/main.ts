@@ -17,6 +17,9 @@ import { renderPricingSection } from './components/PricingSection';
 import { renderCtaSection } from './components/CtaSection';
 import { renderFooter } from './components/Footer';
 import { renderTrialModal } from './components/TrialModal';
+import { renderLanguageToggle } from './components/LanguageToggle';
+
+import { initI18n, onLanguageChange } from './i18n';
 
 import confetti from 'canvas-confetti';
 
@@ -39,11 +42,20 @@ function renderApp(): void {
     </main>
     ${renderFooter()}
     ${renderTrialModal()}
+    ${renderLanguageToggle()}
   `;
 }
 
 // 2. Interactive Handlers Setup
 function initInteractions(): void {
+  // Multi-Language Localization System Setup & Reactive ScrollTrigger Recalibration
+  initI18n();
+  onLanguageChange(() => {
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 150);
+  });
+
   // Sticky Navbar Scroll & Reading Progress Bar (0% at top, 100% at bottom)
   const navbar = document.getElementById('navbar');
   const scrollProgressBar = document.getElementById('header-scroll-progress');

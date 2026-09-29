@@ -1240,7 +1240,7 @@ main > section {
 .rocket-cta-desc {
   font-size: 1.15rem;
   color: #CBD5E1;
-  max-width: 680px;
+  max-width: 740px;
   margin: 0 auto 2.5rem;
   line-height: 1.6;
 }
@@ -3444,6 +3444,173 @@ body.loader-active {
   color: #F8FAFC;
   letter-spacing: 0.02em;
 }
+
+/* ==========================================================================
+   Localization Typography & Language Switching Styles
+   ========================================================================== */
+
+:lang(si), [data-lang="si"] {
+  font-family: 'Noto Sans Sinhala', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  line-height: 1.65;
+}
+
+:lang(ta), [data-lang="ta"] {
+  font-family: 'Noto Sans Tamil', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  line-height: 1.65;
+}
+
+[data-lang="si"] .hero-title {
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+[data-lang="ta"] .hero-title {
+  font-size: clamp(1.65rem, 3.75vw, 3.2rem);
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  max-width: 860px !important;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+[data-lang="ta"] .hero-title .hero-gradient-text {
+  display: inline-block;
+}
+
+[data-lang="si"] .section-title,
+[data-lang="ta"] .section-title {
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+[data-lang="si"] .hero-subtitle,
+[data-lang="ta"] .hero-subtitle {
+  letter-spacing: 0.02em;
+}
+
+[data-lang="ta"] .rocket-cta-desc {
+  max-width: 780px !important;
+  font-size: 1.12rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 640px) {
+  .cta-desc-br {
+    display: none;
+  }
+}
+
+/* Floating Language Selector Dock */
+.floating-lang-dock {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  pointer-events: auto;
+  user-select: none;
+  animation: fadeInDock 0.5s ease-out;
+}
+
+@keyframes fadeInDock {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.lang-dock-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.4rem;
+  background: rgba(15, 23, 42, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 9999px;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4), 0 0 1px 1px rgba(255, 255, 255, 0.1);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="light"] .lang-dock-inner {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.lang-dock-inner:hover {
+  border-color: rgba(37, 99, 235, 0.45);
+  box-shadow: 0 12px 35px -5px rgba(37, 99, 235, 0.3), 0 0 0 1px rgba(37, 99, 235, 0.3);
+  transform: translateY(-2px);
+}
+
+.lang-globe-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: #94A3B8;
+  margin-left: 0.25rem;
+}
+
+[data-theme="light"] .lang-globe-icon {
+  color: #64748B;
+}
+
+.lang-pills-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.lang-toggle-btn {
+  border: none;
+  background: transparent;
+  color: #94A3B8;
+  padding: 0.3rem 0.65rem;
+  border-radius: 9999px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+[data-theme="light"] .lang-toggle-btn {
+  color: #64748B;
+}
+
+.lang-toggle-btn:hover {
+  color: #F8FAFC;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="light"] .lang-toggle-btn:hover {
+  color: #0F172A;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.lang-toggle-btn.active {
+  background: #2563EB;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.45);
+}
+
+/* Mobile responsive dock */
+@media (max-width: 640px) {
+  .floating-lang-dock {
+    bottom: 1rem;
+    right: 1rem;
+  }
+  .lang-toggle-btn {
+    padding: 0.28rem 0.5rem;
+    font-size: 0.75rem;
+  }
+}
+
 
 
 
